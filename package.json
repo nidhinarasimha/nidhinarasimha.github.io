@@ -1,6 +1,7 @@
 {
   "name": "nidhi-portfolio",
   "private": true,
+  "homepage": "https://nidhinarasimha.github.io",
   "version": "0.1.0",
   "type": "module",
   "scripts": {
@@ -9,7 +10,9 @@
     "preview": "vite preview",
     "serve": "node server.js",
     "dev:server": "node server.js",
-    "dev:all": "concurrently \"npm run dev\" \"npm run dev:server\""
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:server\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "cors": "^2.8.5",

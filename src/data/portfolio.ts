@@ -28,7 +28,7 @@ export const shortBio =
   'I build user-focused web experiences, secure systems, and AI-driven applications while studying Computer Science at PES University.';
 
 export const socials = [
-  { label: 'GitHub', href: 'https://github.com/nidhin-eng' },
+  { label: 'GitHub', href: 'https://github.com/nidhinarasimha' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/nidhi-n-udupa' },
 ];
 
@@ -105,7 +105,7 @@ export const projects: Project[] = [
       'Logging mechanisms for command audit and usage tracking',
     ],
     techStack: ['Python', 'Socket Programming', 'TLS/SSL', 'Client-Server Architecture'],
-    githubUrl: 'https://github.com/nidhin-eng/shadow-exec--CN.git',
+    githubUrl: 'https://github.com/nidhinarasimha/shadow-exec--CN.git',
   },
   {
     slug: 'ai-job-tracker',
@@ -123,7 +123,7 @@ export const projects: Project[] = [
       'PostgreSQL-backed persistence and modern React interface',
     ],
     techStack: ['React', 'Node.js', 'Express', 'PostgreSQL', 'LangChain', 'Hugging Face'],
-    githubUrl: 'https://github.com/nidhin-eng/ai_job_tracker_full_project.git',
+    githubUrl: 'https://github.com/nidhinarasimha/ai_job_tracker_full_project.git',
   },
   {
     slug: 'plantiq',
@@ -141,7 +141,7 @@ export const projects: Project[] = [
       'Buyer discovery and market intel for coffee producers',
     ],
     techStack: ['ResNet50', 'FastAPI', 'React', 'Node.js', 'PostgreSQL', 'LangChain', 'LLaMA-2', 'FAISS'],
-    githubUrl: 'https://github.com/nidhin-eng/Plantiq.git',
+    githubUrl: 'https://github.com/nidhinarasimha/Plantiq.git',
     status: 'Ongoing',
   },
   {
