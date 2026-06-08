@@ -34,24 +34,27 @@ export default function Navbar() {
       setActive('');
       return;
     }
-    const sections = navItems
-      .filter((item): item is { label: string; id: string } => typeof item.id === 'string')
-      .map((item) => document.getElementById(item.id))
-      .filter((section): section is HTMLElement => section !== null);
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => (a.boundingClientRect.y > b.boundingClientRect.y ? 1 : -1));
-        if (visible.length) {
-          setActive(visible[0].target.id);
-        }
-      },
-      { threshold: 0.5 }
-    );
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    const updateActiveSection = () => {
+      const scrollPosition = window.scrollY + 180;
+      const currentSection = navItems
+        .filter((item): item is { label: string; id: string } => typeof item.id === 'string')
+        .map((item) => document.getElementById(item.id))
+        .filter((section): section is HTMLElement => section !== null)
+        .reverse()
+        .find((section) => section.offsetTop <= scrollPosition);
+
+      setActive(currentSection?.id ?? 'intro');
+    };
+
+    updateActiveSection();
+    window.addEventListener('scroll', updateActiveSection, { passive: true });
+    window.addEventListener('resize', updateActiveSection);
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection);
+      window.removeEventListener('resize', updateActiveSection);
+    };
   }, [location.pathname]);
 
   return (

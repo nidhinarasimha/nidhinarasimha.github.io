@@ -165,7 +165,7 @@ export default function Home() {
 
       <motion.section
         id="about"
-        className="min-h-screen bg-[#112240] px-6 py-24 sm:px-8"
+        className="min-h-screen bg-[#edf4ff] px-6 py-24 text-[#0a192f] sm:px-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -173,22 +173,22 @@ export default function Home() {
         variants={sectionVariant}
       >
         <div className="mx-auto max-w-6xl">
-          <SectionHeading title="About" subtitle="A focused student developer building modern apps." />
-          <p className="max-w-3xl leading-8 text-slate-300">
+          <SectionHeading title="About" subtitle="A focused student developer building modern apps." tone="light" />
+          <p className="max-w-3xl leading-8 text-slate-700">
             I am currently pursuing a Bachelor of Technology in Computer Science at PES University. I enjoy building full-stack projects that combine intuitive UI, secure backend systems, and intelligent automation. I am passionate about applying machine learning, cloud computing, and modern web technologies to solve real user problems.
           </p>
-          <div className="mt-8 grid gap-3 rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div className="mt-8 grid gap-3 rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-lg shadow-slate-200/60">
             <div className="flex items-center gap-3">
               <span className="inline-flex h-3 w-3 rounded-full bg-[#64ffda]"></span>
-              <span className="text-sm text-slate-200">Education in Web Technology, Machine Learning, Cloud Computing, Blockchain, Data Structures and Algorithms, Operating Systems, Computer Networks, Database Management and Technology, Data Analytics, and OOAD</span>
+              <span className="text-sm text-slate-700">Education in Web Technology, Machine Learning, Cloud Computing, Blockchain, Data Structures and Algorithms, Operating Systems, Computer Networks, Database Management and Technology, Data Analytics, and OOAD</span>
             </div>
             <div className="flex items-center gap-3">
               <span className="inline-flex h-3 w-3 rounded-full bg-[#64ffda]"></span>
-              <span className="text-sm text-slate-200">Active contributor to IEEE PESU, Kannada Koota, and CodeChef communities</span>
+              <span className="text-sm text-slate-700">Active contributor to IEEE PESU, Kannada Koota, and CodeChef communities</span>
             </div>
             <div className="flex items-center gap-3">
               <span className="inline-flex h-3 w-3 rounded-full bg-[#64ffda]"></span>
-              <span className="text-sm text-slate-200">Focused on secure systems, AI experiences, and polished front-end interfaces</span>
+              <span className="text-sm text-slate-700">Focused on secure systems, AI experiences, and polished front-end interfaces</span>
             </div>
           </div>
         </div>
@@ -196,7 +196,7 @@ export default function Home() {
 
       <motion.section
         id="education"
-        className="min-h-screen bg-[#0a192f] px-6 py-24 sm:px-8"
+        className="min-h-screen bg-[#edf4ff] px-6 py-24 text-[#0a192f] sm:px-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -204,7 +204,7 @@ export default function Home() {
         variants={sectionVariant}
       >
         <div className="mx-auto max-w-6xl">
-          <SectionHeading title="Education" subtitle="Academic journey from school to undergraduate studies." />
+          <SectionHeading title="Education" subtitle="Academic journey from school to undergraduate studies." tone="light" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
@@ -228,12 +228,12 @@ export default function Home() {
             ].map((item) => (
               <article
                 key={item.title}
-                className="rounded-3xl border border-white/10 bg-[#112240] p-6 shadow-xl shadow-black/20 transition hover:-translate-y-1 hover:border-[#64ffda] sm:p-8"
+                className="rounded-3xl border border-slate-200 bg-white/95 p-6 shadow-xl shadow-slate-200/70 transition hover:-translate-y-1 hover:border-[#64ffda] sm:p-8"
               >
                 <p className="text-sm uppercase tracking-[0.24em] text-[#64ffda]">{item.period}</p>
-                <h3 className="mt-4 text-2xl font-semibold text-white">{item.title}</h3>
-                <p className="mt-2 text-slate-300">{item.institution}</p>
-                <ul className="mt-5 space-y-3 text-slate-300">
+                <h3 className="mt-4 text-2xl font-semibold text-[#0a192f]">{item.title}</h3>
+                <p className="mt-2 text-slate-700">{item.institution}</p>
+                <ul className="mt-5 space-y-3 text-slate-700">
                   {item.details.map((detail) => (
                     <li key={detail} className="flex gap-2 text-sm">
                       <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-[#64ffda]"></span>
@@ -275,17 +275,17 @@ export default function Home() {
 
       <motion.section
         id="projects"
-        className="min-h-screen bg-[#112240] px-6 py-24 sm:px-8"
+        className="min-h-screen bg-[#edf4ff] px-6 py-24 text-[#0a192f] sm:px-8"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.2 }}
         variants={sectionVariant}
       >
-        <SectionHeading title="Projects" subtitle="Selected applications, research, and AI tools." />
+        <SectionHeading title="Projects" subtitle="Selected applications, research, and AI tools." tone="light" />
         <div className="grid gap-6 xl:grid-cols-2">
           {featuredProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+            <ProjectCard key={project.slug} project={project} tone="light" />
           ))}
         </div>
       </motion.section>
