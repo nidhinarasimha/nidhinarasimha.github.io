@@ -6,9 +6,10 @@ const navItems = [
   { label: 'About', id: 'about' },
   { label: 'Skills', id: 'skills' },
   { label: 'Projects', id: 'projects' },
-  { label: 'Experience', id: 'experience' },
   { label: 'Contact', id: 'contact' },
 ];
+
+const educationLink = { label: 'Education', path: '/education' };
 
 export default function Navbar() {
   const [active, setActive] = useState('intro');
@@ -68,6 +69,12 @@ export default function Navbar() {
               {item.label}
             </button>
           ))}
+          <Link
+            to={educationLink.path}
+            className={`transition-colors ${location.pathname === educationLink.path ? 'text-[#64ffda]' : 'text-slate-300 hover:text-white'}`}
+          >
+            {educationLink.label}
+          </Link>
         </nav>
 
         <button
@@ -97,6 +104,13 @@ export default function Navbar() {
                 {item.label}
               </button>
             ))}
+            <Link
+              to={educationLink.path}
+              onClick={() => setOpen(false)}
+              className={`rounded-lg px-3 py-2 text-left transition ${location.pathname === educationLink.path ? 'bg-[#112240] text-[#64ffda]' : 'text-slate-200 hover:bg-white/5 hover:text-white'}`}
+            >
+              {educationLink.label}
+            </Link>
           </div>
         </div>
       )}
