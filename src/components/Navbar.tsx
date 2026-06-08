@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 const navItems = [
   { label: 'Intro', id: 'intro' },
   { label: 'About', id: 'about' },
-  { label: 'Education', path: '/education' },
+  { label: 'Education', id: 'education' },
   { label: 'Skills', id: 'skills' },
   { label: 'Projects', id: 'projects' },
   { label: 'Experience', id: 'experience' },
@@ -60,26 +60,16 @@ export default function Navbar() {
         <Link to="/" aria-label="Home" className="h-8 w-8 rounded-full border border-white/10 bg-[#64ffda]/10" />
 
         <nav className="hidden items-center gap-6 md:flex">
-          {navItems.map((item) =>
-            item.path ? (
-              <Link
-                key={item.label}
-                to={item.path}
-                className={`transition-colors ${location.pathname === item.path ? 'text-[#64ffda]' : 'text-slate-300 hover:text-white'}`}
-              >
-                {item.label}
-              </Link>
-            ) : (
-              <button
-                key={item.id}
-                type="button"
-                onClick={() => scrollToSection(item.id ?? '')}
-                className={`transition-colors ${active === item.id ? 'text-[#64ffda]' : 'text-slate-300 hover:text-white'}`}
-              >
-                {item.label}
-              </button>
-            )
-          )}
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => scrollToSection(item.id)}
+              className={`transition-colors ${active === item.id ? 'text-[#64ffda]' : 'text-slate-300 hover:text-white'}`}
+            >
+              {item.label}
+            </button>
+          ))}
         </nav>
 
         <button
@@ -96,30 +86,19 @@ export default function Navbar() {
       {open && (
         <div className="border-t border-white/10 bg-[#0a192f]/98 px-6 py-4 md:hidden">
           <div className="flex flex-col gap-3">
-            {navItems.map((item) =>
-              item.path ? (
-                <Link
-                  key={item.label}
-                  to={item.path}
-                  onClick={() => setOpen(false)}
-                  className={`rounded-lg px-3 py-2 text-left transition ${location.pathname === item.path ? 'bg-[#112240] text-[#64ffda]' : 'text-slate-200 hover:bg-white/5 hover:text-white'}`}
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => {
-                    scrollToSection(item.id ?? '');
-                    setOpen(false);
-                  }}
-                  className={`block rounded-lg px-3 py-2 text-left transition ${active === item.id ? 'bg-[#112240] text-[#64ffda]' : 'text-slate-200 hover:bg-white/5 hover:text-white'}`}
-                >
-                  {item.label}
-                </button>
-              )
-            )}
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => {
+                  scrollToSection(item.id);
+                  setOpen(false);
+                }}
+                className={`block rounded-lg px-3 py-2 text-left transition ${active === item.id ? 'bg-[#112240] text-[#64ffda]' : 'text-slate-200 hover:bg-white/5 hover:text-white'}`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         </div>
       )}

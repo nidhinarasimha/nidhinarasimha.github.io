@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { projects, skillCategories, timeline, name, title, shortBio, socials, contactInfo } from '../data/portfolio';
 import ProjectCard from '../components/ProjectCard';
 import SectionHeading from '../components/SectionHeading';
@@ -113,12 +113,12 @@ export default function Home() {
               >
                 View Projects
               </a>
-              <Link
-                to="/education"
+              <a
+                href="#education"
                 className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm text-white transition hover:border-[#64ffda] hover:text-[#64ffda]"
               >
                 Education
-              </Link>
+              </a>
               <a
                 href="#contact"
                 className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm text-white transition hover:border-[#64ffda] hover:text-[#64ffda]"
@@ -195,6 +195,59 @@ export default function Home() {
       </motion.section>
 
       <motion.section
+        id="education"
+        className="min-h-screen bg-[#0a192f] px-6 py-24 sm:px-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.15 }}
+        variants={sectionVariant}
+      >
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading title="Education" subtitle="Academic journey from school to undergraduate studies." />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                period: '2023 - 2027',
+                title: 'B.Tech in Computer Science',
+                institution: 'PES University, Bangalore',
+                details: ['Focused on software development, data structures, databases, networks, operating systems, cloud, ML, and blockchain.'],
+              },
+              {
+                period: '2021 - 2023',
+                title: 'PUC / Pre-University',
+                institution: 'Jnanashudha PU College, Karkala',
+                details: ['Completed pre-university education with a strong foundation in science and mathematics.'],
+              },
+              {
+                period: '2009 - 2021',
+                title: 'Schooling',
+                institution: 'St. Norbert CBSE School',
+                details: ['Completed school education from class 1 to 12 under the CBSE curriculum.'],
+              },
+            ].map((item) => (
+              <article
+                key={item.title}
+                className="rounded-3xl border border-white/10 bg-[#112240] p-6 shadow-xl shadow-black/20 transition hover:-translate-y-1 hover:border-[#64ffda] sm:p-8"
+              >
+                <p className="text-sm uppercase tracking-[0.24em] text-[#64ffda]">{item.period}</p>
+                <h3 className="mt-4 text-2xl font-semibold text-white">{item.title}</h3>
+                <p className="mt-2 text-slate-300">{item.institution}</p>
+                <ul className="mt-5 space-y-3 text-slate-300">
+                  {item.details.map((detail) => (
+                    <li key={detail} className="flex gap-2 text-sm">
+                      <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-[#64ffda]"></span>
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section
         id="skills"
         className="min-h-screen bg-[#0a192f] px-6 py-24 text-slate-100 sm:px-8"
         initial="hidden"
@@ -216,6 +269,23 @@ export default function Home() {
                 ))}
               </div>
             </div>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        id="projects"
+        className="min-h-screen bg-[#112240] px-6 py-24 sm:px-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        variants={sectionVariant}
+      >
+        <SectionHeading title="Projects" subtitle="Selected applications, research, and AI tools." />
+        <div className="grid gap-6 xl:grid-cols-2">
+          {featuredProjects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </motion.section>
@@ -252,23 +322,6 @@ export default function Home() {
                 ))}
               </ul>
             </motion.article>
-          ))}
-        </div>
-      </motion.section>
-
-      <motion.section
-        id="projects"
-        className="min-h-screen bg-[#112240] px-6 py-24 sm:px-8"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-        variants={sectionVariant}
-      >
-        <SectionHeading title="Projects" subtitle="Selected applications, research, and AI tools." />
-        <div className="grid gap-6 xl:grid-cols-2">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </motion.section>
