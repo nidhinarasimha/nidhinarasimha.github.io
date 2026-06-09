@@ -73,42 +73,41 @@ export default function Navbar() {
     };
   }, [location.pathname]);
 
-  const accent = isDark ? '#c084fc' : '#0066cc';
-
   const headerStyle = isDark
     ? { background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(255,255,255,0.07)' }
     : undefined;
 
   const headerClass = isDark
     ? 'fixed left-0 right-0 top-0 z-50'
-    : 'fixed left-0 right-0 top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-lg';
+    : 'fixed left-0 right-0 top-0 z-50 border-b border-pink-100 bg-white/95 backdrop-blur-lg';
 
-  const navLinkActive = isDark ? 'text-[#c084fc]' : 'text-[#0066cc]';
-  const navLinkInactive = isDark ? 'text-white/50 hover:text-white' : 'text-slate-500 hover:text-[#0f172a]';
-  const textBase = isDark ? 'text-white' : 'text-[#0f172a]';
+  const navLinkActive = isDark ? 'text-[#c084fc]' : 'text-[#f472b6]';
+  const navLinkInactive = isDark ? 'text-white/50 hover:text-white' : 'text-slate-500 hover:text-[#1c0a14]';
+  const textBase = isDark ? 'text-white' : 'text-[#1c0a14]';
 
   const mobileMenuStyle = isDark
     ? { background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', borderTop: '1px solid rgba(255,255,255,0.07)' }
     : undefined;
-  const mobileMenuClass = isDark ? '' : 'border-t border-slate-200 bg-white';
-  const mobileActive = isDark ? 'text-[#c084fc]' : 'text-[#0066cc] bg-[#e8f0fe]';
-  const mobileInactive = isDark ? 'text-white/60 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:bg-slate-100 hover:text-[#0f172a]';
+  const mobileMenuClass = isDark ? '' : 'border-t border-pink-100 bg-white';
+  const mobileActive = isDark ? 'text-[#c084fc]' : 'text-[#f472b6] bg-[#fce7f3]';
+  const mobileInactive = isDark ? 'text-white/60 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:bg-pink-50 hover:text-[#1c0a14]';
 
   const logoStyle = isDark
     ? { border: '1px solid rgba(192,132,252,0.3)', background: 'rgba(192,132,252,0.08)' }
-    : { border: '1px solid rgba(0,102,204,0.3)', background: 'rgba(0,102,204,0.06)' };
+    : { border: '1px solid rgba(244,114,182,0.35)', background: 'rgba(244,114,182,0.08)' };
 
   const toggleStyle = isDark
     ? { border: '1px solid rgba(192,132,252,0.25)', background: 'rgba(192,132,252,0.08)', color: '#c084fc' }
-    : undefined;
+    : { border: '1px solid rgba(244,114,182,0.3)', background: 'rgba(244,114,182,0.08)', color: '#f472b6' };
+
   const toggleClass = isDark
     ? 'flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:bg-[#c084fc]/15'
-    : 'flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-slate-100 text-[#0066cc] hover:bg-slate-200 transition-all duration-200';
+    : 'flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:bg-[#f472b6]/15';
 
   const hamburgerClass = isDark
-    ? 'inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg transition-colors hover:bg-white/5'
-    : 'inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 transition-colors';
-  const barClass = isDark ? 'block h-0.5 w-5 bg-white/70' : 'block h-0.5 w-5 bg-[#0f172a]';
+    ? 'md:hidden inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg transition-colors hover:bg-white/5'
+    : 'md:hidden inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-pink-100 bg-pink-50 transition-colors';
+  const barClass = isDark ? 'block h-0.5 w-5 bg-white/70' : 'block h-0.5 w-5 bg-[#1c0a14]';
 
   return (
     <header className={headerClass} style={headerStyle}>
