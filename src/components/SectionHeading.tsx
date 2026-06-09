@@ -10,7 +10,7 @@ export default function SectionHeading({
   tone?: 'dark' | 'light';
 }) {
   const { isDark } = useTheme();
-  const accentColor = isDark ? '#c084fc' : '#f472b6';
+  const accentColor = isDark ? '#c084fc' : '#a78bfa';
 
   const textColor = !isDark
     ? 'text-[#0f172a]'

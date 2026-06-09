@@ -45,8 +45,8 @@ export default function Home() {
   const splitWords = (text: string) => text.split(' ');
 
   // ─── theme tokens ────────────────────────────────────────────────
-  const accent      = d ? '#c084fc' : '#f472b6';
-  const accentHover = d ? '#a855f7' : '#ec4899';
+  const accent      = d ? '#c084fc' : '#a78bfa';
+  const accentHover = d ? '#a855f7' : '#8b5cf6';
 
   const glass = d
     ? { background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)' }
@@ -55,21 +55,21 @@ export default function Home() {
     ? { background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(28px)', WebkitBackdropFilter: 'blur(28px)', border: '1px solid rgba(255,255,255,0.1)' }
     : undefined;
 
-  const cardBase  = d ? 'rounded-3xl shadow-2xl shadow-black/60' : 'rounded-3xl border border-pink-100 bg-white shadow-xl shadow-pink-100/50';
+  const cardBase  = d ? 'rounded-3xl shadow-2xl shadow-black/60' : 'rounded-3xl border border-violet-200 bg-white shadow-xl shadow-violet-100/50';
   const cardHover = `transition hover:-translate-y-1 ${d ? '' : ''}`;
 
-  const secBgNormal  = d ? '' : 'bg-[#fff0f5]';
-  const secBgAlt     = d ? '' : 'bg-[#fce7f3]';
-  const secBgContact = d ? '' : 'bg-[#fdf2f8]';
+  const secBgNormal  = d ? '' : 'bg-[#faf5ff]';
+  const secBgAlt     = d ? '' : 'bg-[#ede9fe]';
+  const secBgContact = d ? '' : 'bg-[#f0ebff]';
 
-  const textPrimary = d ? 'text-white'    : 'text-[#1c0a14]';
-  const textSec     = d ? 'text-white/60' : 'text-[#6b3a51]';
-  const textDim     = d ? 'text-white/50' : 'text-[#6b3a51]';
+  const textPrimary = d ? 'text-white'    : 'text-[#1e1033]';
+  const textSec     = d ? 'text-white/60' : 'text-[#6d5a92]';
+  const textDim     = d ? 'text-white/50' : 'text-[#6d5a92]';
 
-  const lightCardText = d ? 'text-[#6b3a51]' : 'text-[#6b3a51]';
-  const lightHeading  = d ? 'text-[#1c0a14]' : 'text-[#1c0a14]';
+  const lightCardText = d ? 'text-[#6d5a92]' : 'text-[#6d5a92]';
+  const lightHeading  = d ? 'text-[#1e1033]' : 'text-[#1e1033]';
 
-  const skillPill      = d ? 'text-white text-sm px-4 py-3 rounded-2xl' : 'bg-[#fce7f3] text-[#9d174d] text-sm px-4 py-3 rounded-2xl';
+  const skillPill      = d ? 'text-white text-sm px-4 py-3 rounded-2xl' : 'bg-[#ede9fe] text-[#5b21b6] text-sm px-4 py-3 rounded-2xl';
   const skillPillStyle = d ? { background: 'rgba(192,132,252,0.1)', border: '1px solid rgba(192,132,252,0.2)', backdropFilter: 'blur(8px)' } : undefined;
 
   const greetingWords = splitWords(`Hello, I'm`);
@@ -89,7 +89,7 @@ export default function Home() {
       {/* ── Intro ──────────────────────────────────────────────────── */}
       <motion.section
         id="intro"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : 'bg-[#fff0f5]/85'}`}
+        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : 'bg-[#faf5ff]/85'}`}
         initial="hidden" animate="visible" variants={sectionVariant}
       >
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-2">
@@ -113,7 +113,7 @@ export default function Home() {
               ))}
             </motion.h1>
 
-            <motion.h2 className={`flex flex-wrap text-3xl font-medium sm:text-4xl ${d ? 'text-white/70' : 'text-[#9d174d]/80'}`} variants={lineContainer}>
+            <motion.h2 className={`flex flex-wrap text-3xl font-medium sm:text-4xl ${d ? 'text-white/70' : 'text-[#5b21b6]/80'}`} variants={lineContainer}>
               {titleWords.map((word, i) => (
                 <motion.span key={i} className="inline-block mr-2" variants={wordItem}>{word}</motion.span>
               ))}
@@ -152,7 +152,7 @@ export default function Home() {
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  className={`transition ${d ? 'hover:text-white' : 'hover:text-[#1c0a14]'}`}
+                  className={`transition ${d ? 'hover:text-white' : 'hover:text-[#1e1033]'}`}
                   variants={wordItem}
                 >
                   {social.label}
@@ -177,9 +177,9 @@ export default function Home() {
                 backdropFilter: 'blur(10px)',
                 boxShadow: '0 25px 50px rgba(0,0,0,0.6), 0 0 60px rgba(192,132,252,0.1)',
               } : {
-                border: '2px solid #f472b6',
-                background: 'linear-gradient(to bottom right, #fce7f3, #fff0f5)',
-                boxShadow: '0 25px 50px rgba(244,114,182,0.15)',
+                border: '2px solid #a78bfa',
+                background: 'linear-gradient(to bottom right, #ede9fe, #faf5ff)',
+                boxShadow: '0 25px 50px rgba(167,139,250,0.15)',
               }}
             >
               <img src={profileImage} alt="Nidhi Narasimha" className="h-full w-full rounded-2xl object-cover" />
@@ -191,7 +191,7 @@ export default function Home() {
       {/* ── About ──────────────────────────────────────────────────── */}
       <motion.section
         id="about"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgAlt} text-[#1c0a14]`}`}
+        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgAlt} text-[#1e1033]`}`}
         initial="hidden" whileInView="visible" viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.1 }} variants={sectionVariant}
       >
@@ -220,7 +220,7 @@ export default function Home() {
               <p className={`max-w-3xl leading-8 ${textDim}`}>
                 I am currently pursuing a Bachelor of Technology in Computer Science at PES University. I enjoy building full-stack projects that combine intuitive UI, secure backend systems, and intelligent automation. I am passionate about applying machine learning, cloud computing, and modern web technologies to solve real user problems.
               </p>
-              <div className="mt-8 grid gap-3 rounded-3xl border border-pink-100 bg-white p-6 shadow-lg shadow-pink-100/40">
+              <div className="mt-8 grid gap-3 rounded-3xl border border-violet-200 bg-white p-6 shadow-lg shadow-violet-100/40">
                 {[
                   'Education in Web Technology, Machine Learning, Cloud Computing, Blockchain, Data Structures and Algorithms, Operating Systems, Computer Networks, Database Management and Technology, Data Analytics, and OOAD',
                   'Active contributor to IEEE PESU, Kannada Koota, and CodeChef communities',
@@ -228,7 +228,7 @@ export default function Home() {
                 ].map((text) => (
                   <div key={text} className="flex items-start gap-3">
                     <span className="mt-1.5 inline-flex h-3 w-3 shrink-0 rounded-full" style={{ background: accent }}></span>
-                    <span className="text-sm text-[#6b3a51]">{text}</span>
+                    <span className="text-sm text-[#6d5a92]">{text}</span>
                   </div>
                 ))}
               </div>
@@ -240,7 +240,7 @@ export default function Home() {
       {/* ── Education ──────────────────────────────────────────────── */}
       <motion.section
         id="education"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgNormal} text-[#1c0a14]`}`}
+        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgNormal} text-[#1e1033]`}`}
         initial="hidden" whileInView="visible" viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.15 }} variants={sectionVariant}
       >
@@ -285,7 +285,7 @@ export default function Home() {
       {/* ── Skills ─────────────────────────────────────────────────── */}
       <motion.section
         id="skills"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgAlt} text-[#1c0a14]`}`}
+        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgAlt} text-[#1e1033]`}`}
         initial="hidden" whileInView="visible" viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.15 }} variants={sectionVariant}
       >
@@ -309,7 +309,7 @@ export default function Home() {
       {/* ── Projects ───────────────────────────────────────────────── */}
       <motion.section
         id="projects"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgNormal} text-[#1c0a14]`}`}
+        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgNormal} text-[#1e1033]`}`}
         initial="hidden" whileInView="visible" viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.2 }} variants={sectionVariant}
       >
@@ -326,7 +326,7 @@ export default function Home() {
       {/* ── Experience ─────────────────────────────────────────────── */}
       <motion.section
         id="experience"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgAlt} text-[#1c0a14]`}`}
+        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgAlt} text-[#1e1033]`}`}
         initial="hidden" whileInView="visible" viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.25 }} variants={sectionVariant}
       >
@@ -371,7 +371,7 @@ export default function Home() {
       {/* ── Contact ────────────────────────────────────────────────── */}
       <motion.section
         id="contact"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgContact} text-[#1c0a14]`}`}
+        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgContact} text-[#1e1033]`}`}
         initial="hidden" whileInView="visible" viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.3 }} variants={sectionVariant}
       >
@@ -384,8 +384,8 @@ export default function Home() {
               boxShadow: `0 25px 60px rgba(0,0,0,0.6), 0 0 80px rgba(192,132,252,0.06)`,
             } : {
               background: '#ffffff',
-              border: '1px solid #fce7f3',
-              boxShadow: '0 20px 40px rgba(244,114,182,0.08)',
+              border: '1px solid #ddd6fe',
+              boxShadow: '0 20px 40px rgba(167,139,250,0.08)',
             }}
           >
             <p className={`text-lg font-semibold ${textPrimary}`}>Get in touch</p>

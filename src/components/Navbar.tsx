@@ -52,7 +52,6 @@ export default function Navbar() {
 
   useEffect(() => {
     if (location.pathname !== '/') { setActive(''); return; }
-
     const updateActiveSection = () => {
       const scrollPosition = window.scrollY + 180;
       const current = navItems
@@ -63,7 +62,6 @@ export default function Navbar() {
         .find((section) => section.offsetTop <= scrollPosition);
       setActive(current?.id ?? 'intro');
     };
-
     updateActiveSection();
     window.addEventListener('scroll', updateActiveSection, { passive: true });
     window.addEventListener('resize', updateActiveSection);
@@ -76,38 +74,36 @@ export default function Navbar() {
   const headerStyle = isDark
     ? { background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(255,255,255,0.07)' }
     : undefined;
-
   const headerClass = isDark
     ? 'fixed left-0 right-0 top-0 z-50'
-    : 'fixed left-0 right-0 top-0 z-50 border-b border-pink-100 bg-white/95 backdrop-blur-lg';
+    : 'fixed left-0 right-0 top-0 z-50 border-b border-violet-200 bg-white/95 backdrop-blur-lg';
 
-  const navLinkActive = isDark ? 'text-[#c084fc]' : 'text-[#f472b6]';
-  const navLinkInactive = isDark ? 'text-white/50 hover:text-white' : 'text-slate-500 hover:text-[#1c0a14]';
-  const textBase = isDark ? 'text-white' : 'text-[#1c0a14]';
+  const navLinkActive   = isDark ? 'text-[#c084fc]' : 'text-[#a78bfa]';
+  const navLinkInactive = isDark ? 'text-white/50 hover:text-white' : 'text-slate-500 hover:text-[#1e1033]';
+  const textBase        = isDark ? 'text-white' : 'text-[#1e1033]';
 
   const mobileMenuStyle = isDark
     ? { background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', borderTop: '1px solid rgba(255,255,255,0.07)' }
     : undefined;
-  const mobileMenuClass = isDark ? '' : 'border-t border-pink-100 bg-white';
-  const mobileActive = isDark ? 'text-[#c084fc]' : 'text-[#f472b6] bg-[#fce7f3]';
-  const mobileInactive = isDark ? 'text-white/60 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:bg-pink-50 hover:text-[#1c0a14]';
+  const mobileMenuClass  = isDark ? '' : 'border-t border-violet-200 bg-white';
+  const mobileActive     = isDark ? 'text-[#c084fc]' : 'text-[#a78bfa] bg-[#ede9fe]';
+  const mobileInactive   = isDark ? 'text-white/60 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:bg-violet-50 hover:text-[#1e1033]';
 
   const logoStyle = isDark
     ? { border: '1px solid rgba(192,132,252,0.3)', background: 'rgba(192,132,252,0.08)' }
-    : { border: '1px solid rgba(244,114,182,0.35)', background: 'rgba(244,114,182,0.08)' };
+    : { border: '1px solid rgba(167,139,250,0.35)', background: 'rgba(167,139,250,0.08)' };
 
   const toggleStyle = isDark
     ? { border: '1px solid rgba(192,132,252,0.25)', background: 'rgba(192,132,252,0.08)', color: '#c084fc' }
-    : { border: '1px solid rgba(244,114,182,0.3)', background: 'rgba(244,114,182,0.08)', color: '#f472b6' };
-
+    : { border: '1px solid rgba(167,139,250,0.3)',  background: 'rgba(167,139,250,0.08)', color: '#a78bfa' };
   const toggleClass = isDark
     ? 'flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:bg-[#c084fc]/15'
-    : 'flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:bg-[#f472b6]/15';
+    : 'flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:bg-[#a78bfa]/15';
 
   const hamburgerClass = isDark
     ? 'md:hidden inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg transition-colors hover:bg-white/5'
-    : 'md:hidden inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-pink-100 bg-pink-50 transition-colors';
-  const barClass = isDark ? 'block h-0.5 w-5 bg-white/70' : 'block h-0.5 w-5 bg-[#1c0a14]';
+    : 'md:hidden inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-violet-200 bg-violet-50 transition-colors';
+  const barClass = isDark ? 'block h-0.5 w-5 bg-white/70' : 'block h-0.5 w-5 bg-[#1e1033]';
 
   return (
     <header className={headerClass} style={headerStyle}>
