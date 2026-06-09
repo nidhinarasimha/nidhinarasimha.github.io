@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import SectionHeading from '../components/SectionHeading';
+import { useTheme } from '../contexts/ThemeContext';
 
 const educationEntries = [
   {
@@ -23,9 +24,20 @@ const educationEntries = [
 ];
 
 export default function Education() {
+  const { isDark } = useTheme();
+  const d = isDark;
+
+  const accentColor = d ? '#64ffda' : '#0066cc';
+  const pageBg = d ? 'bg-[#0a192f] text-slate-100' : 'bg-[#f8faff] text-[#0f172a]';
+  const cardClass = d
+    ? 'border-white/10 bg-[#112240] hover:border-[#64ffda]'
+    : 'border-slate-200 bg-white hover:border-[#0066cc]';
+  const headingText = d ? 'text-white' : 'text-[#0f172a]';
+  const bodyText = d ? 'text-slate-300' : 'text-slate-600';
+
   return (
     <motion.section
-      className="min-h-screen bg-[#0a192f] px-6 py-24 sm:px-8"
+      className={`min-h-screen px-6 py-24 sm:px-8 transition-colors duration-300 ${pageBg}`}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -37,15 +49,15 @@ export default function Education() {
           {educationEntries.map((item) => (
             <article
               key={item.title}
-              className="rounded-3xl border border-white/10 bg-[#112240] p-6 shadow-xl shadow-black/20 transition hover:-translate-y-1 hover:border-[#64ffda] sm:p-8"
+              className={`rounded-3xl border p-6 shadow-xl shadow-black/20 transition hover:-translate-y-1 sm:p-8 ${cardClass}`}
             >
-              <p className="text-sm uppercase tracking-[0.24em] text-[#64ffda]">{item.period}</p>
-              <h3 className="mt-4 text-2xl font-semibold text-white">{item.title}</h3>
-              <p className="mt-2 text-slate-300">{item.institution}</p>
-              <ul className="mt-5 space-y-3 text-slate-300">
+              <p className="text-sm uppercase tracking-[0.24em]" style={{ color: accentColor }}>{item.period}</p>
+              <h3 className={`mt-4 text-2xl font-semibold ${headingText}`}>{item.title}</h3>
+              <p className={`mt-2 ${bodyText}`}>{item.institution}</p>
+              <ul className={`mt-5 space-y-3 ${bodyText}`}>
                 {item.details.map((detail) => (
                   <li key={detail} className="flex gap-2 text-sm">
-                    <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-[#64ffda]"></span>
+                    <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: accentColor }}></span>
                     <span>{detail}</span>
                   </li>
                 ))}

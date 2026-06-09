@@ -1,19 +1,27 @@
 import { motion } from 'framer-motion';
 import { Project } from '../data/portfolio';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function ProjectCard({ project, tone = 'dark' }: { project: Project; tone?: 'dark' | 'light' }) {
+  const { isDark } = useTheme();
+  const accentColor = isDark ? '#64ffda' : '#0066cc';
+
   const cardTone = tone === 'light'
-    ? 'border-slate-200 bg-white/95 text-[#0a192f] shadow-slate-200/70 hover:border-[#64ffda]'
-    : 'border-white/10 bg-[#112240]/80 text-white shadow-black/20 hover:border-[#64ffda]';
+    ? 'border-slate-200 bg-white/95 text-[#0a192f] shadow-slate-200/70'
+    : 'border-white/10 bg-[#112240]/80 text-white shadow-black/20';
   const textTone = tone === 'light' ? 'text-[#0a192f]' : 'text-white';
   const metaTone = tone === 'light' ? 'text-slate-700' : 'text-slate-300';
-  const pillTone = tone === 'light' ? 'bg-[#edf4ff] text-[#1e293b]' : 'bg-white/5 text-slate-200';
-  const linkTone = tone === 'light' ? 'text-[#0f766e] hover:text-[#0b5a53]' : 'text-[#64ffda] hover:text-white';
+  const pillTone = tone === 'light'
+    ? (isDark ? 'bg-[#edf4ff] text-[#1e293b]' : 'bg-[#dbeafe] text-[#1e3a5f]')
+    : 'bg-white/5 text-slate-200';
 
   return (
     <motion.article
       className={`group rounded-3xl border p-6 shadow-xl transition hover:-translate-y-1 ${cardTone}`}
+      style={{ ['--hover-border' as string]: accentColor }}
+      onMouseEnter={e => e.currentTarget.style.borderColor = accentColor}
+      onMouseLeave={e => e.currentTarget.style.borderColor = ''}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
@@ -23,7 +31,7 @@ export default function ProjectCard({ project, tone = 'dark' }: { project: Proje
         <div>
           <h3 className={`text-xl font-semibold ${textTone}`}>{project.title}</h3>
           {project.status && (
-            <p className="mt-1 text-xs uppercase tracking-[0.24em] text-[#64ffda]">{project.status}</p>
+            <p className="mt-1 text-xs uppercase tracking-[0.24em]" style={{ color: accentColor }}>{project.status}</p>
           )}
           <p className={`mt-1 text-sm ${metaTone}`}>{project.summary}</p>
         </div>
@@ -37,7 +45,8 @@ export default function ProjectCard({ project, tone = 'dark' }: { project: Proje
       </div>
       <Link
         to={`/projects/${project.slug}`}
-        className={`text-sm font-medium transition ${linkTone}`}
+        className="text-sm font-medium transition hover:opacity-80"
+        style={{ color: accentColor }}
       >
         View details →
       </Link>

@@ -1,14 +1,22 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Background3D from './components/Background3D';
 import Home from './routes/Home';
 import Education from './routes/Education';
 import ProjectDetail from './routes/ProjectDetail';
+import { useTheme } from './contexts/ThemeContext';
 
 function App() {
   const location = useLocation();
+  const { isDark } = useTheme();
 
   return (
-    <div className="min-h-screen bg-[#0a192f] text-slate-100">
+    <div
+      className={`relative min-h-screen transition-colors duration-300 ${
+        isDark ? 'bg-[#0a192f] text-slate-100' : 'bg-[#f8faff] text-[#0f172a]'
+      }`}
+    >
+      <Background3D isDark={isDark} />
       <Navbar />
       <main className="pt-20">
         <Routes location={location}>

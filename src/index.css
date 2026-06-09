@@ -17,6 +17,7 @@ body {
   min-height: 100vh;
   background-color: #0a192f;
   color: #ccd6f6;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 body::-webkit-scrollbar {
@@ -34,8 +35,22 @@ body::-webkit-scrollbar-thumb {
 
 section {
   scroll-snap-align: start;
+  transition: background-color 0.35s ease;
 }
 
 html, body, #root {
   min-height: 100%;
+}
+
+/* 3D background keyframes */
+@keyframes bg3d-float {
+  0%   { transform: perspective(1000px) rotateX(0deg)   rotateY(0deg)   rotateZ(0deg);   }
+  100% { transform: perspective(1000px) rotateX(360deg) rotateY(200deg) rotateZ(90deg);  }
+}
+
+@keyframes bg3d-drift {
+  0%,  100% { transform: translate(0px,    0px);   }
+  25%        { transform: translate(20px,  -24px);  }
+  50%        { transform: translate(-16px,  12px);  }
+  75%        { transform: translate(10px,   20px);  }
 }
