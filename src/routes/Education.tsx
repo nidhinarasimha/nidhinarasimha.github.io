@@ -27,7 +27,7 @@ export default function Education() {
   const { isDark } = useTheme();
   const d = isDark;
 
-  const accent = d ? '#c084fc' : '#38bdf8';
+  const accent = d ? '#7dd3fc' : '#38bdf8';
   const glass = d
     ? { background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)' }
     : undefined;

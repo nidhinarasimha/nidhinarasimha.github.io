@@ -45,8 +45,8 @@ export default function Home() {
   const splitWords = (text: string) => text.split(' ');
 
   // ─── theme tokens ────────────────────────────────────────────────
-  const accent      = d ? '#c084fc' : '#38bdf8';
-  const accentHover = d ? '#a855f7' : '#0ea5e9';
+  const accent      = d ? '#7dd3fc' : '#38bdf8';
+  const accentHover = d ? '#38bdf8' : '#0ea5e9';
 
   const glass = d
     ? { background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)' }
@@ -70,7 +70,7 @@ export default function Home() {
   const lightHeading  = d ? 'text-[#0c1a2e]' : 'text-[#0c1a2e]';
 
   const skillPill      = d ? 'text-white text-sm px-4 py-3 rounded-2xl' : 'bg-[#e0f2fe] text-[#0369a1] text-sm px-4 py-3 rounded-2xl';
-  const skillPillStyle = d ? { background: 'rgba(192,132,252,0.1)', border: '1px solid rgba(192,132,252,0.2)', backdropFilter: 'blur(8px)' } : undefined;
+  const skillPillStyle = d ? { background: 'rgba(125,211,252,0.1)', border: '1px solid rgba(125,211,252,0.2)', backdropFilter: 'blur(8px)' } : undefined;
 
   const greetingWords = splitWords(`Hello, I'm`);
   const nameWords     = splitWords(name);
@@ -172,10 +172,10 @@ export default function Home() {
             <div
               className="h-96 w-80 rounded-3xl p-4"
               style={d ? {
-                background: 'rgba(192,132,252,0.05)',
-                border: '1px solid rgba(192,132,252,0.28)',
+                background: 'rgba(125,211,252,0.05)',
+                border: '1px solid rgba(125,211,252,0.28)',
                 backdropFilter: 'blur(10px)',
-                boxShadow: '0 25px 50px rgba(0,0,0,0.6), 0 0 60px rgba(192,132,252,0.1)',
+                boxShadow: '0 25px 50px rgba(0,0,0,0.6), 0 0 60px rgba(125,211,252,0.1)',
               } : {
                 border: '2px solid #38bdf8',
                 background: 'linear-gradient(to bottom right, #e0f2fe, #f0f9ff)',
@@ -381,7 +381,7 @@ export default function Home() {
             className="rounded-[2rem] p-10 shadow-2xl"
             style={d ? {
               ...glassStrong,
-              boxShadow: `0 25px 60px rgba(0,0,0,0.6), 0 0 80px rgba(192,132,252,0.06)`,
+              boxShadow: `0 25px 60px rgba(0,0,0,0.6), 0 0 80px rgba(125,211,252,0.06)`,
             } : {
               background: '#ffffff',
               border: '1px solid #bae6fd',

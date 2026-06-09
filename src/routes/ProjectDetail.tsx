@@ -13,8 +13,8 @@ export default function ProjectDetail() {
 
   const project = useMemo(() => projects.find((entry) => entry.slug === slug), [slug]);
 
-  const accent = d ? '#c084fc' : '#38bdf8';
-  const accentHover = d ? '#a855f7' : '#0ea5e9';
+  const accent = d ? '#7dd3fc' : '#38bdf8';
+  const accentHover = d ? '#38bdf8' : '#0ea5e9';
 
   const glass = d
     ? { background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)' }
@@ -31,7 +31,7 @@ export default function ProjectDetail() {
     : { border: '1px solid #bae6fd', background: '#ffffff', color: '#0c1a2e' };
 
   const techPillStyle = d
-    ? { background: 'rgba(192,132,252,0.1)', border: '1px solid rgba(192,132,252,0.2)' }
+    ? { background: 'rgba(125,211,252,0.1)', border: '1px solid rgba(125,211,252,0.2)' }
     : undefined;
   const techPillBase = d ? 'rounded-full px-4 py-2 text-sm text-white' : 'rounded-full px-4 py-2 text-sm bg-[#e0f2fe] text-[#0369a1]';
 
@@ -73,7 +73,7 @@ export default function ProjectDetail() {
 
         <div
           className="rounded-[2rem] p-10 shadow-2xl"
-          style={d ? { ...glassStrong, boxShadow: `0 25px 60px rgba(0,0,0,0.6), 0 0 80px rgba(192,132,252,0.06)` } : { background: '#ffffff', border: '1px solid #bae6fd', boxShadow: '0 20px 40px rgba(56,189,248,0.08)' }}
+          style={d ? { ...glassStrong, boxShadow: `0 25px 60px rgba(0,0,0,0.6), 0 0 80px rgba(125,211,252,0.06)` } : { background: '#ffffff', border: '1px solid #bae6fd', boxShadow: '0 20px 40px rgba(56,189,248,0.08)' }}
         >
           <SectionHeading title="Project Detail" subtitle={project.title} />
           {project.status && (

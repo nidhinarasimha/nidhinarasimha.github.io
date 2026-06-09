@@ -78,7 +78,7 @@ export default function Navbar() {
     ? 'fixed left-0 right-0 top-0 z-50'
     : 'fixed left-0 right-0 top-0 z-50 border-b border-sky-200 bg-white/95 backdrop-blur-lg';
 
-  const navLinkActive   = isDark ? 'text-[#c084fc]' : 'text-[#38bdf8]';
+  const navLinkActive   = isDark ? 'text-[#7dd3fc]' : 'text-[#38bdf8]';
   const navLinkInactive = isDark ? 'text-white/50 hover:text-white' : 'text-slate-500 hover:text-[#0c1a2e]';
   const textBase        = isDark ? 'text-white' : 'text-[#0c1a2e]';
 
@@ -86,18 +86,18 @@ export default function Navbar() {
     ? { background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', borderTop: '1px solid rgba(255,255,255,0.07)' }
     : undefined;
   const mobileMenuClass  = isDark ? '' : 'border-t border-sky-200 bg-white';
-  const mobileActive     = isDark ? 'text-[#c084fc]' : 'text-[#38bdf8] bg-[#e0f2fe]';
+  const mobileActive     = isDark ? 'text-[#7dd3fc]' : 'text-[#38bdf8] bg-[#e0f2fe]';
   const mobileInactive   = isDark ? 'text-white/60 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:bg-sky-50 hover:text-[#0c1a2e]';
 
   const logoStyle = isDark
-    ? { border: '1px solid rgba(192,132,252,0.3)', background: 'rgba(192,132,252,0.08)' }
+    ? { border: '1px solid rgba(125,211,252,0.3)', background: 'rgba(125,211,252,0.08)' }
     : { border: '1px solid rgba(56,189,248,0.35)', background: 'rgba(56,189,248,0.08)' };
 
   const toggleStyle = isDark
-    ? { border: '1px solid rgba(192,132,252,0.25)', background: 'rgba(192,132,252,0.08)', color: '#c084fc' }
+    ? { border: '1px solid rgba(125,211,252,0.25)', background: 'rgba(125,211,252,0.08)', color: '#7dd3fc' }
     : { border: '1px solid rgba(56,189,248,0.3)',   background: 'rgba(56,189,248,0.08)',  color: '#38bdf8' };
   const toggleClass = isDark
-    ? 'flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:bg-[#c084fc]/15'
+    ? 'flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:bg-[#7dd3fc]/15'
     : 'flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:bg-[#38bdf8]/15';
 
   const hamburgerClass = isDark

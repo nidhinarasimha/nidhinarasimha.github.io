@@ -17,7 +17,7 @@ function App() {
         isDark
           ? {
               background:
-                'radial-gradient(ellipse 90% 55% at 50% -8%, rgba(192,132,252,0.22) 0%, transparent 65%), #000000',
+                'radial-gradient(ellipse 90% 55% at 50% -8%, rgba(125,211,252,0.12) 0%, transparent 65%), #000000',
             }
           : undefined
       }

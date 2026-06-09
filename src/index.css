@@ -29,12 +29,12 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: rgba(192, 132, 252, 0.25);
+  background: rgba(125, 211, 252, 0.2);
   border-radius: 9999px;
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background: rgba(192, 132, 252, 0.4);
+  background: rgba(125, 211, 252, 0.35);
 }
 
 #root {

@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function Background3D({ isDark }: Props) {
-  const accent = isDark ? '#c084fc' : '#38bdf8';
+  const accent = isDark ? '#7dd3fc' : '#38bdf8';
   const opacity = isDark ? 0.14 : 0.07;
 
   return (

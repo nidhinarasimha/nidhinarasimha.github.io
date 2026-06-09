@@ -5,7 +5,7 @@ import { useTheme } from '../contexts/ThemeContext';
 
 export default function ProjectCard({ project, tone = 'dark' }: { project: Project; tone?: 'dark' | 'light' }) {
   const { isDark } = useTheme();
-  const accent = isDark ? '#c084fc' : '#38bdf8';
+  const accent = isDark ? '#7dd3fc' : '#38bdf8';
 
   const cardStyle = isDark && tone === 'dark'
     ? { background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)' }
@@ -16,7 +16,7 @@ export default function ProjectCard({ project, tone = 'dark' }: { project: Proje
     : 'rounded-3xl border border-sky-200 bg-white shadow-xl shadow-sky-100/60';
 
   const pillStyle = isDark && tone === 'dark'
-    ? { background: 'rgba(192,132,252,0.1)', border: '1px solid rgba(192,132,252,0.2)' }
+    ? { background: 'rgba(125,211,252,0.1)', border: '1px solid rgba(125,211,252,0.2)' }
     : undefined;
   const pillBase = isDark && tone === 'dark'
     ? 'rounded-full px-3 py-1 text-xs text-white'
@@ -30,7 +30,7 @@ export default function ProjectCard({ project, tone = 'dark' }: { project: Proje
       className={`group p-6 transition hover:-translate-y-1 ${cardBase}`}
       style={cardStyle}
       onMouseEnter={e => {
-        if (isDark && tone === 'dark') e.currentTarget.style.borderColor = 'rgba(192,132,252,0.3)';
+        if (isDark && tone === 'dark') e.currentTarget.style.borderColor = 'rgba(125,211,252,0.3)';
         else e.currentTarget.style.borderColor = accent;
       }}
       onMouseLeave={e => {
