@@ -7,6 +7,8 @@ const shapes = [
   { size: 60,  left: '62%', top: '22%', floatDur: 11, driftDur: 16, delay: -3,  radius: '10%' },
   { size: 280, left: '28%', top: '83%', floatDur: 28, driftDur: 42, delay: -22, radius: '40%' },
   { size: 110, left: '76%', top: '74%', floatDur: 17, driftDur: 25, delay: -10, radius: '50%' },
+  { size: 140, left: '90%', top: '20%', floatDur: 21, driftDur: 31, delay: -16, radius: '25%' },
+  { size: 90,  left: '35%', top: '18%', floatDur: 16, driftDur: 24, delay: -7,  radius: '50%' },
 ];
 
 interface Props {
@@ -14,8 +16,8 @@ interface Props {
 }
 
 export default function Background3D({ isDark }: Props) {
-  const accent = isDark ? '#64ffda' : '#3b82f6';
-  const opacity = isDark ? 0.08 : 0.07;
+  const accent = isDark ? '#c084fc' : '#3b82f6';
+  const opacity = isDark ? 0.14 : 0.07;
 
   return (
     <div
@@ -44,6 +46,8 @@ export default function Background3D({ isDark }: Props) {
               height: s.size,
               border: `1.5px solid ${accent}`,
               borderRadius: s.radius,
+              background: i % 4 === 0 ? `${accent}18` : 'transparent',
+              boxShadow: isDark ? `0 0 30px ${accent}18, inset 0 0 20px ${accent}08` : 'none',
               animationName: 'bg3d-float',
               animationDuration: `${s.floatDur}s`,
               animationTimingFunction: 'linear',

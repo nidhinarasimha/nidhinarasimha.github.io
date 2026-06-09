@@ -14,7 +14,7 @@ const navItems = [
 
 function SunIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="5" />
       <line x1="12" y1="1" x2="12" y2="3" />
       <line x1="12" y1="21" x2="12" y2="23" />
@@ -30,7 +30,7 @@ function SunIcon() {
 
 function MoonIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
     </svg>
   );
@@ -44,62 +44,76 @@ export default function Navbar() {
   const { isDark, toggleTheme } = useTheme();
 
   const scrollToSection = (id: string) => {
-    if (location.pathname !== '/') {
-      navigate('/');
-    }
+    if (location.pathname !== '/') navigate('/');
     setTimeout(() => {
-      const section = document.getElementById(id);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-      }
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     }, 80);
   };
 
   useEffect(() => {
-    if (location.pathname !== '/') {
-      setActive('');
-      return;
-    }
+    if (location.pathname !== '/') { setActive(''); return; }
 
     const updateActiveSection = () => {
       const scrollPosition = window.scrollY + 180;
-      const currentSection = navItems
+      const current = navItems
         .filter((item): item is { label: string; id: string } => typeof item.id === 'string')
         .map((item) => document.getElementById(item.id))
         .filter((section): section is HTMLElement => section !== null)
         .reverse()
         .find((section) => section.offsetTop <= scrollPosition);
-
-      setActive(currentSection?.id ?? 'intro');
+      setActive(current?.id ?? 'intro');
     };
 
     updateActiveSection();
     window.addEventListener('scroll', updateActiveSection, { passive: true });
     window.addEventListener('resize', updateActiveSection);
-
     return () => {
       window.removeEventListener('scroll', updateActiveSection);
       window.removeEventListener('resize', updateActiveSection);
     };
   }, [location.pathname]);
 
-  const accent = isDark ? '#64ffda' : '#0066cc';
+  const accent = isDark ? '#c084fc' : '#0066cc';
+
+  const headerStyle = isDark
+    ? { background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(255,255,255,0.07)' }
+    : undefined;
+
   const headerClass = isDark
-    ? 'border-b border-white/10 bg-[#0a192f]/95 backdrop-blur-lg'
-    : 'border-b border-slate-200 bg-white/95 backdrop-blur-lg';
-  const textClass = isDark ? 'text-white' : 'text-[#0f172a]';
-  const navLinkActive = isDark ? 'text-[#64ffda]' : 'text-[#0066cc]';
-  const navLinkInactive = isDark ? 'text-slate-300 hover:text-white' : 'text-slate-500 hover:text-[#0f172a]';
-  const mobileMenuBg = isDark ? 'border-white/10 bg-[#0a192f]/98' : 'border-slate-200 bg-white';
-  const mobileActiveLink = isDark ? 'bg-[#112240] text-[#64ffda]' : 'bg-[#e8f0fe] text-[#0066cc]';
-  const mobileInactiveLink = isDark ? 'text-slate-200 hover:bg-white/5 hover:text-white' : 'text-slate-600 hover:bg-slate-100 hover:text-[#0f172a]';
-  const hamburgerBg = isDark ? 'border-white/10 bg-white/5' : 'border-slate-200 bg-slate-50';
-  const hamburgerBar = isDark ? 'bg-white' : 'bg-[#0f172a]';
+    ? 'fixed left-0 right-0 top-0 z-50'
+    : 'fixed left-0 right-0 top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-lg';
+
+  const navLinkActive = isDark ? 'text-[#c084fc]' : 'text-[#0066cc]';
+  const navLinkInactive = isDark ? 'text-white/50 hover:text-white' : 'text-slate-500 hover:text-[#0f172a]';
+  const textBase = isDark ? 'text-white' : 'text-[#0f172a]';
+
+  const mobileMenuStyle = isDark
+    ? { background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', borderTop: '1px solid rgba(255,255,255,0.07)' }
+    : undefined;
+  const mobileMenuClass = isDark ? '' : 'border-t border-slate-200 bg-white';
+  const mobileActive = isDark ? 'text-[#c084fc]' : 'text-[#0066cc] bg-[#e8f0fe]';
+  const mobileInactive = isDark ? 'text-white/60 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:bg-slate-100 hover:text-[#0f172a]';
+
+  const logoStyle = isDark
+    ? { border: '1px solid rgba(192,132,252,0.3)', background: 'rgba(192,132,252,0.08)' }
+    : { border: '1px solid rgba(0,102,204,0.3)', background: 'rgba(0,102,204,0.06)' };
+
+  const toggleStyle = isDark
+    ? { border: '1px solid rgba(192,132,252,0.25)', background: 'rgba(192,132,252,0.08)', color: '#c084fc' }
+    : undefined;
+  const toggleClass = isDark
+    ? 'flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:bg-[#c084fc]/15'
+    : 'flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-slate-100 text-[#0066cc] hover:bg-slate-200 transition-all duration-200';
+
+  const hamburgerClass = isDark
+    ? 'inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg transition-colors hover:bg-white/5'
+    : 'inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 transition-colors';
+  const barClass = isDark ? 'block h-0.5 w-5 bg-white/70' : 'block h-0.5 w-5 bg-[#0f172a]';
 
   return (
-    <header className={`fixed left-0 right-0 top-0 z-50 transition-colors duration-300 ${headerClass}`}>
-      <div className={`mx-auto flex max-w-6xl items-center justify-between px-6 py-4 text-sm sm:px-8 ${textClass}`}>
-        <Link to="/" aria-label="Home" className="h-8 w-8 rounded-full border border-white/10 bg-[#64ffda]/10" style={{ borderColor: `${accent}33` }} />
+    <header className={headerClass} style={headerStyle}>
+      <div className={`mx-auto flex max-w-6xl items-center justify-between px-6 py-4 text-sm sm:px-8 ${textBase}`}>
+        <Link to="/" aria-label="Home" className="h-8 w-8 rounded-full" style={logoStyle} />
 
         <nav className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (
@@ -118,39 +132,33 @@ export default function Navbar() {
           <button
             onClick={toggleTheme}
             aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            className={`flex h-9 w-9 items-center justify-center rounded-full border transition-all duration-200 ${
-              isDark
-                ? 'border-white/20 bg-white/5 text-[#64ffda] hover:bg-[#64ffda]/10 hover:border-[#64ffda]/40'
-                : 'border-slate-300 bg-slate-100 text-[#0066cc] hover:bg-slate-200'
-            }`}
+            className={toggleClass}
+            style={toggleStyle}
           >
             {isDark ? <SunIcon /> : <MoonIcon />}
           </button>
 
           <button
-            className={`inline-flex h-10 w-10 flex-col items-center justify-center gap-1 rounded-lg border transition-colors md:hidden ${hamburgerBg}`}
-            onClick={() => setOpen((current) => !current)}
+            className={hamburgerClass}
+            onClick={() => setOpen((v) => !v)}
             aria-label="Toggle navigation"
           >
-            <span className={`block h-0.5 w-5 ${hamburgerBar}`}></span>
-            <span className={`block h-0.5 w-5 ${hamburgerBar}`}></span>
-            <span className={`block h-0.5 w-5 ${hamburgerBar}`}></span>
+            <span className={barClass}></span>
+            <span className={barClass}></span>
+            <span className={barClass}></span>
           </button>
         </div>
       </div>
 
       {open && (
-        <div className={`border-t px-6 py-4 md:hidden ${mobileMenuBg}`}>
+        <div className={`px-6 py-4 md:hidden ${mobileMenuClass}`} style={mobileMenuStyle}>
           <div className="flex flex-col gap-3">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 type="button"
-                onClick={() => {
-                  scrollToSection(item.id);
-                  setOpen(false);
-                }}
-                className={`block rounded-lg px-3 py-2 text-left transition ${active === item.id ? mobileActiveLink : mobileInactiveLink}`}
+                onClick={() => { scrollToSection(item.id); setOpen(false); }}
+                className={`block rounded-lg px-3 py-2 text-left transition ${active === item.id ? mobileActive : mobileInactive}`}
               >
                 {item.label}
               </button>

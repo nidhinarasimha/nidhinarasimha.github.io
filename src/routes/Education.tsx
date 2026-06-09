@@ -27,17 +27,14 @@ export default function Education() {
   const { isDark } = useTheme();
   const d = isDark;
 
-  const accentColor = d ? '#64ffda' : '#0066cc';
-  const pageBg = d ? 'bg-[#0a192f] text-slate-100' : 'bg-[#f8faff] text-[#0f172a]';
-  const cardClass = d
-    ? 'border-white/10 bg-[#112240] hover:border-[#64ffda]'
-    : 'border-slate-200 bg-white hover:border-[#0066cc]';
-  const headingText = d ? 'text-white' : 'text-[#0f172a]';
-  const bodyText = d ? 'text-slate-300' : 'text-slate-600';
+  const accent = d ? '#c084fc' : '#0066cc';
+  const glass = d
+    ? { background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)' }
+    : undefined;
 
   return (
     <motion.section
-      className={`min-h-screen px-6 py-24 sm:px-8 transition-colors duration-300 ${pageBg}`}
+      className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : 'bg-[#f8faff] text-[#0f172a]'}`}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -49,15 +46,18 @@ export default function Education() {
           {educationEntries.map((item) => (
             <article
               key={item.title}
-              className={`rounded-3xl border p-6 shadow-xl shadow-black/20 transition hover:-translate-y-1 sm:p-8 ${cardClass}`}
+              className={`rounded-3xl p-6 shadow-2xl shadow-black/50 transition hover:-translate-y-1 sm:p-8 ${d ? '' : 'border border-slate-200 bg-white'}`}
+              style={d ? glass : undefined}
+              onMouseEnter={e => d && (e.currentTarget.style.borderColor = `${accent}40`)}
+              onMouseLeave={e => d && (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}
             >
-              <p className="text-sm uppercase tracking-[0.24em]" style={{ color: accentColor }}>{item.period}</p>
-              <h3 className={`mt-4 text-2xl font-semibold ${headingText}`}>{item.title}</h3>
-              <p className={`mt-2 ${bodyText}`}>{item.institution}</p>
-              <ul className={`mt-5 space-y-3 ${bodyText}`}>
+              <p className="text-sm uppercase tracking-[0.24em]" style={{ color: accent }}>{item.period}</p>
+              <h3 className={`mt-4 text-xl font-semibold ${d ? 'text-white' : 'text-[#0f172a]'}`}>{item.title}</h3>
+              <p className={`mt-2 text-sm ${d ? 'text-white/55' : 'text-slate-600'}`}>{item.institution}</p>
+              <ul className={`mt-5 space-y-3 ${d ? 'text-white/50' : 'text-slate-600'}`}>
                 {item.details.map((detail) => (
                   <li key={detail} className="flex gap-2 text-sm">
-                    <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: accentColor }}></span>
+                    <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: accent }}></span>
                     <span>{detail}</span>
                   </li>
                 ))}

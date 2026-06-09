@@ -12,9 +12,15 @@ function App() {
 
   return (
     <div
-      className={`relative min-h-screen transition-colors duration-300 ${
-        isDark ? 'bg-[#0a192f] text-slate-100' : 'bg-[#f8faff] text-[#0f172a]'
-      }`}
+      className={`relative min-h-screen ${isDark ? 'text-white' : 'bg-[#f8faff] text-[#0f172a]'}`}
+      style={
+        isDark
+          ? {
+              background:
+                'radial-gradient(ellipse 90% 55% at 50% -8%, rgba(192,132,252,0.22) 0%, transparent 65%), #000000',
+            }
+          : undefined
+      }
     >
       <Background3D isDark={isDark} />
       <Navbar />
