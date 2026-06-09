@@ -19,7 +19,7 @@ const educationEntries = [
     period: '2009 - 2021',
     title: 'Schooling',
     institution: 'St. Norbert CBSE School',
-    details: ['Completed school education from class 1 to 12 under the CBSE curriculum.'],
+    details: ['Completed school education from class 1 to 10 under the CBSE curriculum.'],
   },
 ];
 

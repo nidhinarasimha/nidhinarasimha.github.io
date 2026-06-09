@@ -219,7 +219,7 @@ export const timeline: TimelineItem[] = [
     ],
   },
   {
-    date: 'Apr 2024',
+    date: '2025',
     title: 'ML Hackathon',
     subtitle: 'Hackathon development',
     details: [

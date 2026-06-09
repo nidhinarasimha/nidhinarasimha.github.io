@@ -164,7 +164,7 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            className="hidden lg:flex items-center justify-center"
+            className="flex items-center justify-center"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}
@@ -250,7 +250,7 @@ export default function Home() {
             {[
               { period: '2023 - 2027', title: 'B.Tech in Computer Science', institution: 'PES University, Bangalore', details: ['Focused on software development, data structures, databases, networks, operating systems, cloud, ML, and blockchain.'] },
               { period: '2021 - 2023', title: 'PUC / Pre-University', institution: 'Jnanashudha PU College, Karkala', details: ['Completed pre-university education with a strong foundation in science and mathematics.'] },
-              { period: '2009 - 2021', title: 'Schooling', institution: 'St. Norbert CBSE School', details: ['Completed school education from class 1 to 12 under the CBSE curriculum.'] },
+              { period: '2009 - 2021', title: 'Schooling', institution: 'St. Norbert CBSE School', details: ['Completed school education from class 1 to 10 under the CBSE curriculum.'] },
             ].map((item) => (
               <article
                 key={item.title}
@@ -331,7 +331,7 @@ export default function Home() {
         transition={{ duration: 0.7, delay: 0.25 }} variants={sectionVariant}
       >
         <div className="mx-auto max-w-6xl">
-          <SectionHeading title="Experience" subtitle="Projects, achievements, and leadership highlights." />
+          <SectionHeading title="Experience" subtitle="Hackathons and certifications." />
           <div className="grid gap-6 lg:grid-cols-2">
             {timeline.slice(1).map((item) => (
               <motion.article
