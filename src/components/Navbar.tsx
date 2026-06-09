@@ -76,34 +76,34 @@ export default function Navbar() {
     : undefined;
   const headerClass = isDark
     ? 'fixed left-0 right-0 top-0 z-50'
-    : 'fixed left-0 right-0 top-0 z-50 border-b border-violet-200 bg-white/95 backdrop-blur-lg';
+    : 'fixed left-0 right-0 top-0 z-50 border-b border-sky-200 bg-white/95 backdrop-blur-lg';
 
-  const navLinkActive   = isDark ? 'text-[#c084fc]' : 'text-[#a78bfa]';
-  const navLinkInactive = isDark ? 'text-white/50 hover:text-white' : 'text-slate-500 hover:text-[#1e1033]';
-  const textBase        = isDark ? 'text-white' : 'text-[#1e1033]';
+  const navLinkActive   = isDark ? 'text-[#c084fc]' : 'text-[#38bdf8]';
+  const navLinkInactive = isDark ? 'text-white/50 hover:text-white' : 'text-slate-500 hover:text-[#0c1a2e]';
+  const textBase        = isDark ? 'text-white' : 'text-[#0c1a2e]';
 
   const mobileMenuStyle = isDark
     ? { background: 'rgba(0,0,0,0.7)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', borderTop: '1px solid rgba(255,255,255,0.07)' }
     : undefined;
-  const mobileMenuClass  = isDark ? '' : 'border-t border-violet-200 bg-white';
-  const mobileActive     = isDark ? 'text-[#c084fc]' : 'text-[#a78bfa] bg-[#ede9fe]';
-  const mobileInactive   = isDark ? 'text-white/60 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:bg-violet-50 hover:text-[#1e1033]';
+  const mobileMenuClass  = isDark ? '' : 'border-t border-sky-200 bg-white';
+  const mobileActive     = isDark ? 'text-[#c084fc]' : 'text-[#38bdf8] bg-[#e0f2fe]';
+  const mobileInactive   = isDark ? 'text-white/60 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:bg-sky-50 hover:text-[#0c1a2e]';
 
   const logoStyle = isDark
     ? { border: '1px solid rgba(192,132,252,0.3)', background: 'rgba(192,132,252,0.08)' }
-    : { border: '1px solid rgba(167,139,250,0.35)', background: 'rgba(167,139,250,0.08)' };
+    : { border: '1px solid rgba(56,189,248,0.35)', background: 'rgba(56,189,248,0.08)' };
 
   const toggleStyle = isDark
     ? { border: '1px solid rgba(192,132,252,0.25)', background: 'rgba(192,132,252,0.08)', color: '#c084fc' }
-    : { border: '1px solid rgba(167,139,250,0.3)',  background: 'rgba(167,139,250,0.08)', color: '#a78bfa' };
+    : { border: '1px solid rgba(56,189,248,0.3)',   background: 'rgba(56,189,248,0.08)',  color: '#38bdf8' };
   const toggleClass = isDark
     ? 'flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:bg-[#c084fc]/15'
-    : 'flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:bg-[#a78bfa]/15';
+    : 'flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:bg-[#38bdf8]/15';
 
   const hamburgerClass = isDark
     ? 'md:hidden inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg transition-colors hover:bg-white/5'
-    : 'md:hidden inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-violet-200 bg-violet-50 transition-colors';
-  const barClass = isDark ? 'block h-0.5 w-5 bg-white/70' : 'block h-0.5 w-5 bg-[#1e1033]';
+    : 'md:hidden inline-flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-lg border border-sky-200 bg-sky-50 transition-colors';
+  const barClass = isDark ? 'block h-0.5 w-5 bg-white/70' : 'block h-0.5 w-5 bg-[#0c1a2e]';
 
   return (
     <header className={headerClass} style={headerStyle}>

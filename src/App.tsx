@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div
-      className={`relative min-h-screen ${isDark ? 'text-white' : 'bg-[#faf5ff] text-[#1e1033]'}`}
+      className={`relative min-h-screen ${isDark ? 'text-white' : 'bg-[#f0f9ff] text-[#0c1a2e]'}`}
       style={
         isDark
           ? {

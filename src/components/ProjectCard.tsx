@@ -5,7 +5,7 @@ import { useTheme } from '../contexts/ThemeContext';
 
 export default function ProjectCard({ project, tone = 'dark' }: { project: Project; tone?: 'dark' | 'light' }) {
   const { isDark } = useTheme();
-  const accent = isDark ? '#c084fc' : '#a78bfa';
+  const accent = isDark ? '#c084fc' : '#38bdf8';
 
   const cardStyle = isDark && tone === 'dark'
     ? { background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)' }
@@ -13,17 +13,17 @@ export default function ProjectCard({ project, tone = 'dark' }: { project: Proje
 
   const cardBase = isDark && tone === 'dark'
     ? 'rounded-3xl shadow-2xl shadow-black/60'
-    : 'rounded-3xl border border-violet-200 bg-white shadow-xl shadow-violet-100/60';
+    : 'rounded-3xl border border-sky-200 bg-white shadow-xl shadow-sky-100/60';
 
   const pillStyle = isDark && tone === 'dark'
     ? { background: 'rgba(192,132,252,0.1)', border: '1px solid rgba(192,132,252,0.2)' }
     : undefined;
   const pillBase = isDark && tone === 'dark'
     ? 'rounded-full px-3 py-1 text-xs text-white'
-    : 'rounded-full px-3 py-1 text-xs bg-[#ede9fe] text-[#5b21b6]';
+    : 'rounded-full px-3 py-1 text-xs bg-[#e0f2fe] text-[#0369a1]';
 
-  const textPrimary = isDark && tone === 'dark' ? 'text-white' : 'text-[#1e1033]';
-  const textMeta = isDark && tone === 'dark' ? 'text-white/55' : 'text-[#6d5a92]';
+  const textPrimary = isDark && tone === 'dark' ? 'text-white' : 'text-[#0c1a2e]';
+  const textMeta = isDark && tone === 'dark' ? 'text-white/55' : 'text-[#4a6480]';
 
   return (
     <motion.article
