@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 
 const navItems = [
@@ -89,10 +89,6 @@ export default function Navbar() {
   const mobileActive     = isDark ? 'text-[#7dd3fc]' : 'text-[#38bdf8] bg-[#e0f2fe]';
   const mobileInactive   = isDark ? 'text-white/60 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:bg-sky-50 hover:text-[#0c1a2e]';
 
-  const logoStyle = isDark
-    ? { border: '1px solid rgba(125,211,252,0.3)', background: 'rgba(125,211,252,0.08)' }
-    : { border: '1px solid rgba(56,189,248,0.35)', background: 'rgba(56,189,248,0.08)' };
-
   const toggleStyle = isDark
     ? { border: '1px solid rgba(125,211,252,0.25)', background: 'rgba(125,211,252,0.08)', color: '#7dd3fc' }
     : { border: '1px solid rgba(56,189,248,0.3)',   background: 'rgba(56,189,248,0.08)',  color: '#38bdf8' };
@@ -108,8 +104,6 @@ export default function Navbar() {
   return (
     <header className={headerClass} style={headerStyle}>
       <div className={`mx-auto flex max-w-6xl items-center justify-between px-6 py-4 text-sm sm:px-8 ${textBase}`}>
-        <Link to="/" aria-label="Home" className="h-8 w-8 rounded-full" style={logoStyle} />
-
         <nav className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (
             <button

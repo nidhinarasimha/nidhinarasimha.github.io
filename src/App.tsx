@@ -1,6 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Background3D from './components/Background3D';
 import Home from './routes/Home';
 import Education from './routes/Education';
 import ProjectDetail from './routes/ProjectDetail';
@@ -17,12 +16,11 @@ function App() {
         isDark
           ? {
               background:
-                'radial-gradient(ellipse 90% 55% at 50% -8%, rgba(125,211,252,0.12) 0%, transparent 65%), #000000',
+                'radial-gradient(ellipse 90% 55% at 50% -8%, rgba(125,211,252,0.08) 0%, transparent 60%), #000000',
             }
           : undefined
       }
     >
-      <Background3D isDark={isDark} />
       <Navbar />
       <main className="pt-20">
         <Routes location={location}>
