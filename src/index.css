@@ -2,10 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-accent-from: #0284c7; /* deep sky blue */
+    --color-accent-to: #1d4ed8;   /* bold royal blue */
+    --color-bg-base: #e2e8f0;     /* soft slate-200 (unused directly, but reference) */
+  }
+
+  body {
+    @apply antialiased text-slate-800 transition-colors duration-300;
+  }
+
+  /* Hide default cursor on desktop since we have a custom animated one */
+  @media (min-width: 768px) {
+    * {
+      cursor: none !important;
+    }
+  }
+
+  .dark {
+    --color-accent-from: #38bdf8; /* bright sky */
+    --color-accent-to: #60a5fa;   /* soft blue */
+    --color-bg-base: #020617;     /* very deep slate/blue */
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(to right, var(--color-accent-from), var(--color-accent-to));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .bg-gradient-accent {
+    background: linear-gradient(to right, var(--color-accent-from), var(--color-accent-to));
+  }
+}
+
 :root {
-  color-scheme: dark;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background-color: #000000;
 }
 
 html {
@@ -15,9 +50,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: #000000;
-  color: rgba(255, 255, 255, 0.9);
-  transition: background-color 0.35s ease, color 0.35s ease;
+  /* background-color and color are handled by App.tsx */
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 body::-webkit-scrollbar {

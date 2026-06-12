@@ -37,7 +37,7 @@ export default function ProjectDetail() {
 
   if (!project) {
     return (
-      <div className={`mx-auto flex min-h-[70vh] max-w-5xl flex-col items-center justify-center px-6 py-24 text-center sm:px-8 ${d ? '' : 'bg-[#f0f9ff]'}`}>
+      <div className={`mx-auto flex min-h-[70vh] max-w-5xl flex-col items-center justify-center px-6 py-12 md:py-20 text-center sm:px-8 ${d ? '' : 'bg-[#f0f9ff]'}`}>
         <h2 className={`text-3xl font-semibold ${textPrimary}`}>Project not found</h2>
         <p className={`mt-4 ${textSec}`}>Please return to the portfolio and select a valid project.</p>
         <button
@@ -55,7 +55,7 @@ export default function ProjectDetail() {
 
   return (
     <motion.section
-      className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : 'bg-[#f0f9ff] text-[#0c1a2e]'}`}
+      className={`px-6 pt-12 pb-20 md:pt-16 md:pb-28 sm:px-8 min-h-[80vh] ${d ? '' : 'bg-[#f0f9ff] text-[#0c1a2e]'}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
@@ -77,7 +77,7 @@ export default function ProjectDetail() {
         >
           <SectionHeading title="Project Detail" subtitle={project.title} />
           {project.status && (
-            <p className="mt-2 text-sm uppercase tracking-[0.24em]" style={{ color: accent }}>{project.status}</p>
+            <p className="mt-2 text-sm uppercase tracking-[0.24em] text-gradient">{project.status}</p>
           )}
           <p className={`max-w-3xl ${textSec}`}>{project.description}</p>
 
