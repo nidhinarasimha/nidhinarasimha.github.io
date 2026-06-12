@@ -13,12 +13,7 @@
     @apply antialiased text-slate-800 transition-colors duration-300;
   }
 
-  /* Hide default cursor on desktop since we have a custom animated one */
-  @media (min-width: 768px) {
-    * {
-      cursor: none !important;
-    }
-  }
+  /* Cursor settings removed to allow default PC pointer */
 
   .dark {
     --color-accent-from: #38bdf8; /* bright sky */
