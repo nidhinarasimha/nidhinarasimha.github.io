@@ -66,7 +66,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://linkedin.com/in/nidhinarasimha" target="_blank" rel="noreferrer" className={`transition-colors ${linkHoverClass}`}>
+                <a href="https://www.linkedin.com/in/nidhi-n-udupa" target="_blank" rel="noreferrer" className={`transition-colors ${linkHoverClass}`}>
                   LinkedIn
                 </a>
               </li>

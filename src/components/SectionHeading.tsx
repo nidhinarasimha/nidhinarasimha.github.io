@@ -10,7 +10,6 @@ export default function SectionHeading({
   tone?: 'dark' | 'light';
 }) {
   const { isDark } = useTheme();
-  const accentColor = isDark ? '#7dd3fc' : '#38bdf8';
 
   const textColor = !isDark
     ? 'text-[#0f172a]'
@@ -26,7 +25,7 @@ export default function SectionHeading({
       </div>
       
       {subtitle && (
-        <h2 className={`mt-4 text-3xl font-bold tracking-tight sm:text-4xl ${textColor}`}>
+        <h2 className={`mt-4 text-2xl font-bold tracking-tight sm:text-3xl ${textColor}`}>
           {subtitle}
         </h2>
       )}

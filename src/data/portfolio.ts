@@ -242,6 +242,5 @@ export const timeline: TimelineItem[] = [
 
 export const contactInfo = {
   email: 'nidhiudupa17@gmail.com',
-  phone: '+91 8660090248',
   location: 'Bangalore, India',
 };

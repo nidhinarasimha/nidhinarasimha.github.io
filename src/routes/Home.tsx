@@ -92,17 +92,17 @@ export default function Home() {
             variants={staggerContainer} initial="hidden" animate="visible"
           >
             <motion.p
-              className="text-xl sm:text-2xl font-semibold tracking-wide text-gradient uppercase"
+              className="text-base sm:text-lg font-semibold tracking-wide text-gradient uppercase"
               variants={textVariant}
             >
               Hello, I'm
             </motion.p>
 
-            <motion.h1 className={`text-5xl font-bold tracking-tight leading-none sm:text-6xl lg:text-7xl ${textPrimary}`} variants={textVariant}>
+            <motion.h1 className={`text-4xl font-bold tracking-tight leading-none sm:text-5xl lg:text-6xl ${textPrimary}`} variants={textVariant}>
               {name}
             </motion.h1>
 
-            <motion.h2 className={`text-2xl font-medium sm:text-3xl lg:text-4xl ${d ? 'text-white/80' : 'text-slate-700'}`} variants={textVariant}>
+            <motion.h2 className={`text-xl font-medium sm:text-2xl lg:text-3xl ${d ? 'text-white/80' : 'text-slate-700'}`} variants={textVariant}>
               {title.split('|').map((part, index) => (
                 <span key={index} className={`block ${index === 1 ? 'text-gradient mt-1 sm:mt-2 font-semibold' : ''}`}>
                   {part.trim()}
@@ -110,7 +110,7 @@ export default function Home() {
               ))}
             </motion.h2>
 
-            <motion.p className={`max-w-2xl text-base sm:text-lg lg:text-xl leading-relaxed ${textSec}`} variants={textVariant}>
+            <motion.p className={`max-w-2xl text-sm sm:text-base lg:text-lg leading-relaxed ${textSec}`} variants={textVariant}>
               {shortBio}
             </motion.p>
 
@@ -123,7 +123,7 @@ export default function Home() {
                 <a
                   key={label}
                   href={href}
-                  className={`inline-flex items-center justify-center rounded-full px-8 py-3.5 text-sm sm:text-base font-semibold transition-all duration-300 hover:-translate-y-1 ${
+                  className={`inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 hover:-translate-y-1 ${
                     primary 
                       ? 'bg-gradient-accent text-white shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50' 
                       : `border-2 ${d ? 'border-sky-500/30 text-sky-400 hover:bg-sky-500/10' : 'border-slate-400 text-slate-800 hover:bg-slate-300 hover:border-slate-500'}`
@@ -182,7 +182,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <SectionHeading title="About" subtitle="A focused student developer building modern apps." tone={d ? 'dark' : 'light'} />
           <div className={`p-8 sm:p-12 ${cardBase}`} style={d ? glassStrong : undefined}>
-            <p className={`max-w-3xl leading-relaxed sm:text-lg ${d ? 'text-white/80' : textSec}`}>
+            <p className={`max-w-3xl leading-relaxed text-sm sm:text-base ${d ? 'text-white/80' : textSec}`}>
               I am currently pursuing a Bachelor of Technology in Computer Science at PES University. I enjoy building full-stack projects that combine intuitive UI, secure backend systems, and intelligent automation. I am passionate about applying machine learning, cloud computing, and modern web technologies to solve real user problems.
             </p>
             <div className="mt-8 sm:mt-10 grid gap-5">
@@ -316,7 +316,7 @@ export default function Home() {
                 transition={{ duration: 0.45 }}
               >
                 <p className="text-sm uppercase tracking-[0.24em] text-gradient">{item.date}</p>
-                <h3 className={`mt-3 text-xl font-semibold ${textPrimary}`}>{item.title}</h3>
+                <h3 className={`mt-3 text-lg font-semibold ${textPrimary}`}>{item.title}</h3>
                 <p className={`mt-1 text-sm ${textSec}`}>{item.subtitle}</p>
                 <ul className={`mt-5 space-y-3 ${textSec}`}>
                   {item.details.map((detail) => (
@@ -352,7 +352,7 @@ export default function Home() {
               boxShadow: '0 20px 40px rgba(56,189,248,0.08)',
             }}
           >
-            <p className={`text-lg font-semibold ${textPrimary}`}>Get in touch</p>
+            <p className={`text-base font-semibold ${textPrimary}`}>Get in touch</p>
             <p className={`mt-4 ${textSec}`}>
               I'm open to collaborations, internships, and project discussions. Reach out if you want to build secure applications, AI tools, or web products with a clean, professional experience.
             </p>
@@ -362,10 +362,6 @@ export default function Home() {
                 <a href={`mailto:${contactInfo.email}`} className="transition hover:opacity-80 text-gradient">
                   {contactInfo.email}
                 </a>
-              </div>
-              <div>
-                <p className={`font-semibold ${textPrimary}`}>Phone</p>
-                <p>{contactInfo.phone}</p>
               </div>
               <div>
                 <p className={`font-semibold ${textPrimary}`}>Location</p>
