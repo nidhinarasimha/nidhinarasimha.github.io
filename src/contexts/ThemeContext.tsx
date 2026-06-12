@@ -12,9 +12,10 @@ export function useTheme() {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [isDark, setIsDark] = useState(true);
+  // Hardcoded to true to disable light mode completely
+  const isDark = true;
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme: () => setIsDark(v => !v) }}>
+    <ThemeContext.Provider value={{ isDark, toggleTheme: () => {} }}>
       {children}
     </ThemeContext.Provider>
   );

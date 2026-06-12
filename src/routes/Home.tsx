@@ -13,8 +13,18 @@ const featuredProjects = projects.filter(
 );
 
 const sectionVariant = {
-  hidden: { opacity: 0, y: 35 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
+const textVariant = {
+  hidden: { opacity: 0, y: 15 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } }
 };
 
 export default function Home() {
@@ -35,218 +45,172 @@ export default function Home() {
     }
   }, [location.hash]);
 
-  const introContainer = { hidden: {}, visible: { transition: { staggerChildren: 0.35 } } };
-  const lineContainer  = { hidden: {}, visible: { transition: { staggerChildren: 0.12 } } };
-  const wordItem = {
-    hidden: { opacity: 0, y: 24, scale: 0.96 },
-    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.9, ease: 'easeOut' } },
-  };
-
-  const splitWords = (text: string) => text.split(' ');
-
   // ─── theme tokens ────────────────────────────────────────────────
-  const accent      = d ? '#7dd3fc' : '#38bdf8';
-  const accentHover = d ? '#38bdf8' : '#0ea5e9';
+  const accent      = d ? '#7dd3fc' : '#0ea5e9';
+  const accentHover = d ? '#38bdf8' : '#0284c7';
 
+  // Minimal glassmorphism
   const glass = d
-    ? { background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)' }
+    ? { background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.05)' }
     : undefined;
   const glassStrong = d
-    ? { background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(28px)', WebkitBackdropFilter: 'blur(28px)', border: '1px solid rgba(255,255,255,0.1)' }
+    ? { background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(24px)', border: '1px solid rgba(255,255,255,0.08)' }
     : undefined;
 
-  const cardBase  = d ? 'rounded-3xl shadow-2xl shadow-black/60' : 'rounded-3xl border border-sky-200 bg-white shadow-xl shadow-sky-100/50';
-  const cardHover = `transition hover:-translate-y-1 ${d ? '' : ''}`;
+  // Clean cards, no heavy glow
+  const cardBase  = d ? 'rounded-3xl border border-white/5 bg-white/5 shadow-sm' : 'rounded-3xl border border-slate-200 bg-white shadow-sm';
+  const cardHover = `transition hover:-translate-y-1 hover:shadow-md`;
 
-  const secBgNormal  = d ? '' : 'bg-[#f0f9ff]';
-  const secBgAlt     = d ? '' : 'bg-[#e0f2fe]';
-  const secBgContact = d ? '' : 'bg-[#f0f9ff]';
+  const secBgNormal  = d ? '' : '';
+  const secBgAlt     = d ? '' : '';
+  const secBgContact = d ? '' : '';
 
-  const textPrimary = d ? 'text-white'    : 'text-[#0c1a2e]';
-  const textSec     = d ? 'text-white/60' : 'text-[#4a6480]';
-  const textDim     = d ? 'text-white/50' : 'text-[#4a6480]';
+  const textPrimary = d ? 'text-white'    : 'text-slate-900';
+  const textSec     = d ? 'text-white/70' : 'text-slate-600';
+  const textDim     = d ? 'text-white/50' : 'text-slate-500';
 
-  const lightCardText = d ? 'text-[#4a6480]' : 'text-[#4a6480]';
-  const lightHeading  = d ? 'text-[#0c1a2e]' : 'text-[#0c1a2e]';
+  const lightCardText = d ? 'text-white/70' : 'text-slate-600';
+  const lightHeading  = d ? 'text-white' : 'text-slate-900';
 
-  const skillPill      = d ? 'text-white text-sm px-4 py-3 rounded-2xl' : 'bg-[#e0f2fe] text-[#0369a1] text-sm px-4 py-3 rounded-2xl';
-  const skillPillStyle = d ? { background: 'rgba(125,211,252,0.1)', border: '1px solid rgba(125,211,252,0.2)', backdropFilter: 'blur(8px)' } : undefined;
+  const skillPill      = d ? 'text-white text-sm px-4 py-2 rounded-full' : 'bg-slate-100 text-slate-700 text-sm px-4 py-2 rounded-full';
+  const skillPillStyle = d ? { background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' } : undefined;
 
-  const greetingWords = splitWords(`Hello, I'm`);
-  const nameWords     = splitWords(name);
-  const titleWords    = splitWords(title);
-  const bioWords      = splitWords(shortBio);
-
-  // shared filled-button style (used for all 3 intro buttons)
-  const filledBtn = {
-    base: { background: accent, color: '#000000', boxShadow: `0 0 24px ${accent}55` },
-    hover: { background: accentHover, boxShadow: `0 0 32px ${accentHover}66` },
-  };
+  // Clean gradient buttons
+  const filledBtnClass = `bg-gradient-accent text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg`;
 
   return (
-    <div className="snap-y snap-mandatory">
+    <div className="">
 
-      {/* ── Intro ──────────────────────────────────────────────────── */}
       <motion.section
         id="intro"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : 'bg-[#f0f9ff]/85'}`}
+        className={`relative px-6 pt-4 pb-24 md:pt-4 md:pb-20 lg:pb-24 sm:px-8 min-h-[calc(100dvh-5rem)] flex items-center`}
         initial="hidden" animate="visible" variants={sectionVariant}
       >
-        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-2">
+        <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 lg:gap-20 lg:grid-cols-2">
           <motion.div
             className="flex flex-col justify-center gap-6 text-left"
-            variants={introContainer} initial="hidden" animate="visible"
+            variants={staggerContainer} initial="hidden" animate="visible"
           >
             <motion.p
-              className="flex flex-wrap text-xs uppercase tracking-[0.4em] font-medium"
-              style={{ color: accent }}
-              variants={lineContainer}
+              className="text-xl sm:text-2xl font-semibold tracking-wide text-gradient uppercase"
+              variants={textVariant}
             >
-              {greetingWords.map((word, i) => (
-                <motion.span key={i} className="inline-block mr-2" variants={wordItem}>{word}</motion.span>
-              ))}
+              Hello, I'm
             </motion.p>
 
-            <motion.h1 className={`flex flex-wrap text-6xl font-bold leading-tight sm:text-7xl ${textPrimary}`} variants={lineContainer}>
-              {nameWords.map((word, i) => (
-                <motion.span key={i} className="inline-block mr-3" variants={wordItem}>{word}</motion.span>
-              ))}
+            <motion.h1 className={`text-5xl font-bold tracking-tight leading-none sm:text-6xl lg:text-7xl ${textPrimary}`} variants={textVariant}>
+              {name}
             </motion.h1>
 
-            <motion.h2 className={`flex flex-wrap text-3xl font-medium sm:text-4xl ${d ? 'text-white/70' : 'text-[#0369a1]/80'}`} variants={lineContainer}>
-              {titleWords.map((word, i) => (
-                <motion.span key={i} className="inline-block mr-2" variants={wordItem}>{word}</motion.span>
+            <motion.h2 className={`text-2xl font-medium sm:text-3xl lg:text-4xl ${d ? 'text-white/80' : 'text-slate-700'}`} variants={textVariant}>
+              {title.split('|').map((part, index) => (
+                <span key={index} className={`block ${index === 1 ? 'text-gradient mt-1 sm:mt-2 font-semibold' : ''}`}>
+                  {part.trim()}
+                </span>
               ))}
             </motion.h2>
 
-            <motion.p className={`max-w-3xl text-lg leading-8 ${textSec}`} variants={lineContainer}>
-              {bioWords.map((word, i) => (
-                <motion.span key={i} className="inline-block mr-2" variants={wordItem}>{word}</motion.span>
-              ))}
+            <motion.p className={`max-w-2xl text-base sm:text-lg lg:text-xl leading-relaxed ${textSec}`} variants={textVariant}>
+              {shortBio}
             </motion.p>
 
-            {/* All 3 buttons — same filled style */}
-            <motion.div className="flex flex-wrap gap-4" variants={lineContainer}>
+            <motion.div className="flex flex-wrap gap-4 pt-4" variants={textVariant}>
               {[
-                { label: 'View Projects', href: '#projects' },
-                { label: 'Education',    href: '#education' },
-                { label: 'Contact Me',   href: '#contact'   },
-              ].map(({ label, href }) => (
+                { label: 'View Projects', href: '#projects', primary: true },
+                { label: 'Education',    href: '#education', primary: false },
+                { label: 'Contact Me',   href: '#contact', primary: false },
+              ].map(({ label, href, primary }) => (
                 <a
                   key={label}
                   href={href}
-                  className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-all"
-                  style={filledBtn.base}
-                  onMouseEnter={e => Object.assign(e.currentTarget.style, filledBtn.hover)}
-                  onMouseLeave={e => Object.assign(e.currentTarget.style, filledBtn.base)}
+                  className={`inline-flex items-center justify-center rounded-full px-8 py-3.5 text-sm sm:text-base font-semibold transition-all duration-300 hover:-translate-y-1 ${
+                    primary 
+                      ? 'bg-gradient-accent text-white shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50' 
+                      : `border-2 ${d ? 'border-sky-500/30 text-sky-400 hover:bg-sky-500/10' : 'border-slate-400 text-slate-800 hover:bg-slate-300 hover:border-slate-500'}`
+                  }`}
                 >
                   {label}
                 </a>
               ))}
             </motion.div>
 
-            <motion.div className={`flex flex-wrap items-center gap-4 text-sm ${textSec}`} variants={lineContainer}>
+            <motion.div className={`flex flex-wrap items-center gap-4 text-sm mt-4 ${textDim}`} variants={textVariant}>
               {socials.map((social) => (
-                <motion.a
+                <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  className={`transition ${d ? 'hover:text-white' : 'hover:text-[#0c1a2e]'}`}
-                  variants={wordItem}
+                  className={`transition hover:-translate-y-0.5 ${d ? 'hover:text-white' : 'hover:text-slate-900'}`}
                 >
                   {social.label}
-                </motion.a>
+                </a>
               ))}
-              <motion.span className="hidden sm:inline" variants={wordItem}>|</motion.span>
-              <motion.span variants={wordItem}>{contactInfo.location}</motion.span>
+              <span className="hidden sm:inline">|</span>
+              <span>{contactInfo.location}</span>
             </motion.div>
           </motion.div>
 
           <motion.div
-            className="flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            className="flex items-center justify-center lg:justify-end"
+            variants={textVariant}
           >
-            <div
-              className="h-96 w-80 rounded-3xl p-4"
-              style={d ? {
-                background: 'rgba(125,211,252,0.05)',
-                border: '1px solid rgba(125,211,252,0.28)',
-                backdropFilter: 'blur(10px)',
-                boxShadow: '0 25px 50px rgba(0,0,0,0.6), 0 0 60px rgba(125,211,252,0.1)',
-              } : {
-                border: '2px solid #38bdf8',
-                background: 'linear-gradient(to bottom right, #e0f2fe, #f0f9ff)',
-                boxShadow: '0 25px 50px rgba(56,189,248,0.15)',
-              }}
-            >
-              <img src={profileImage} alt="Nidhi Narasimha" className="h-full w-full rounded-2xl object-cover" />
+            <div className="relative group h-80 w-72 sm:h-[26rem] sm:w-[22rem] lg:h-[30rem] lg:w-[26rem]">
+              {/* Soft Gradient Shadow Behind Image */}
+              <div className="absolute inset-0 translate-x-3 translate-y-4 rounded-3xl bg-gradient-accent opacity-20 blur-xl transition-all duration-500 group-hover:translate-x-5 group-hover:translate-y-6 group-hover:opacity-30"></div>
+              
+              {/* Actual Image */}
+              <img 
+                src={profileImage} 
+                alt="Nidhi Narasimha" 
+                className="relative z-10 h-full w-full rounded-3xl object-cover grayscale-[15%] shadow-2xl transition-all duration-500 group-hover:-translate-y-2 group-hover:scale-[1.02] group-hover:grayscale-0" 
+              />
             </div>
           </motion.div>
         </div>
+
+
       </motion.section>
 
       {/* ── About ──────────────────────────────────────────────────── */}
       <motion.section
         id="about"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgAlt} text-[#0c1a2e]`}`}
-        initial="hidden" whileInView="visible" viewport={{ once: true }}
+        className={`px-6 py-20 md:py-28 sm:px-8 ${d ? '' : `${secBgAlt} text-[#0c1a2e]`}`}
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.7, delay: 0.1 }} variants={sectionVariant}
       >
         <div className="mx-auto max-w-6xl">
           <SectionHeading title="About" subtitle="A focused student developer building modern apps." tone={d ? 'dark' : 'light'} />
-          {d ? (
-            <div className="rounded-3xl p-10 shadow-2xl shadow-black/60" style={glassStrong}>
-              <p className="max-w-3xl leading-8 text-white/70">
-                I am currently pursuing a Bachelor of Technology in Computer Science at PES University. I enjoy building full-stack projects that combine intuitive UI, secure backend systems, and intelligent automation. I am passionate about applying machine learning, cloud computing, and modern web technologies to solve real user problems.
-              </p>
-              <div className="mt-8 grid gap-4">
-                {[
-                  'Education in Web Technology, Machine Learning, Cloud Computing, Blockchain, Data Structures and Algorithms, Operating Systems, Computer Networks, Database Management and Technology, Data Analytics, and OOAD',
-                  'Active contributor to IEEE PESU, Kannada Koota, and CodeChef communities',
-                  'Focused on secure systems, AI experiences, and polished front-end interfaces',
-                ].map((text) => (
-                  <div key={text} className="flex items-start gap-3">
-                    <span className="mt-1.5 inline-block h-2 w-2 shrink-0 rounded-full" style={{ background: accent, boxShadow: `0 0 6px ${accent}` }}></span>
-                    <span className="text-sm text-white/60">{text}</span>
-                  </div>
-                ))}
-              </div>
+          <div className={`p-8 sm:p-12 ${cardBase}`} style={d ? glassStrong : undefined}>
+            <p className={`max-w-3xl leading-relaxed sm:text-lg ${d ? 'text-white/80' : textSec}`}>
+              I am currently pursuing a Bachelor of Technology in Computer Science at PES University. I enjoy building full-stack projects that combine intuitive UI, secure backend systems, and intelligent automation. I am passionate about applying machine learning, cloud computing, and modern web technologies to solve real user problems.
+            </p>
+            <div className="mt-8 sm:mt-10 grid gap-5">
+              {[
+                'Education in Web Technology, Machine Learning, Cloud Computing, Blockchain, Data Structures and Algorithms, Operating Systems, Computer Networks, Database Management and Technology, Data Analytics, and OOAD',
+                'Active contributor to IEEE PESU, Kannada Koota, and CodeChef communities',
+                'Focused on secure systems, AI experiences, and polished front-end interfaces',
+              ].map((text) => (
+                <div key={text} className="flex items-start gap-4">
+                  <span className="mt-2 inline-block h-2 w-2 shrink-0 rounded-full bg-gradient-accent"></span>
+                  <span className={`text-base leading-relaxed ${d ? 'text-white/70' : textSec}`}>{text}</span>
+                </div>
+              ))}
             </div>
-          ) : (
-            <>
-              <p className={`max-w-3xl leading-8 ${textDim}`}>
-                I am currently pursuing a Bachelor of Technology in Computer Science at PES University. I enjoy building full-stack projects that combine intuitive UI, secure backend systems, and intelligent automation. I am passionate about applying machine learning, cloud computing, and modern web technologies to solve real user problems.
-              </p>
-              <div className="mt-8 grid gap-3 rounded-3xl border border-sky-200 bg-white p-6 shadow-lg shadow-sky-100/40">
-                {[
-                  'Education in Web Technology, Machine Learning, Cloud Computing, Blockchain, Data Structures and Algorithms, Operating Systems, Computer Networks, Database Management and Technology, Data Analytics, and OOAD',
-                  'Active contributor to IEEE PESU, Kannada Koota, and CodeChef communities',
-                  'Focused on secure systems, AI experiences, and polished front-end interfaces',
-                ].map((text) => (
-                  <div key={text} className="flex items-start gap-3">
-                    <span className="mt-1.5 inline-flex h-3 w-3 shrink-0 rounded-full" style={{ background: accent }}></span>
-                    <span className="text-sm text-[#4a6480]">{text}</span>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
+          </div>
         </div>
       </motion.section>
 
       {/* ── Education ──────────────────────────────────────────────── */}
       <motion.section
         id="education"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgNormal} text-[#0c1a2e]`}`}
-        initial="hidden" whileInView="visible" viewport={{ once: true }}
+        className={`px-6 py-20 md:py-28 sm:px-8 ${d ? '' : `${secBgNormal} text-[#0c1a2e]`}`}
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.7, delay: 0.15 }} variants={sectionVariant}
       >
         <div className="mx-auto max-w-6xl">
           <SectionHeading title="Education" subtitle="Academic journey from school to undergraduate studies." tone={d ? 'dark' : 'light'} />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { period: '2023 - 2027', title: 'B.Tech in Computer Science', institution: 'PES University, Bangalore', details: ['Focused on software development, data structures, databases, networks, operating systems, cloud, ML, and blockchain.'] },
               { period: '2021 - 2023', title: 'PUC / Pre-University', institution: 'Jnanashudha PU College, Karkala', details: ['Completed pre-university education with a strong foundation in science and mathematics.'] },
@@ -265,13 +229,13 @@ export default function Home() {
                   : (e.currentTarget.style.borderColor = '')
                 }
               >
-                <p className="text-sm uppercase tracking-[0.24em]" style={{ color: accent }}>{item.period}</p>
+                <p className="text-sm uppercase tracking-[0.24em] text-gradient">{item.period}</p>
                 <h3 className={`mt-4 text-xl font-semibold ${d ? 'text-white' : lightHeading}`}>{item.title}</h3>
                 <p className={`mt-2 text-sm ${d ? 'text-white/55' : lightCardText}`}>{item.institution}</p>
                 <ul className={`mt-5 space-y-3 ${d ? 'text-white/50' : lightCardText}`}>
                   {item.details.map((detail) => (
                     <li key={detail} className="flex gap-2 text-sm">
-                      <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: accent }}></span>
+                      <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-accent"></span>
                       <span>{detail}</span>
                     </li>
                   ))}
@@ -285,8 +249,8 @@ export default function Home() {
       {/* ── Skills ─────────────────────────────────────────────────── */}
       <motion.section
         id="skills"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgAlt} text-[#0c1a2e]`}`}
-        initial="hidden" whileInView="visible" viewport={{ once: true }}
+        className={`px-6 py-20 md:py-28 sm:px-8 ${d ? '' : `${secBgAlt} text-[#0c1a2e]`}`}
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.7, delay: 0.15 }} variants={sectionVariant}
       >
         <div className="mx-auto max-w-6xl">
@@ -309,8 +273,8 @@ export default function Home() {
       {/* ── Projects ───────────────────────────────────────────────── */}
       <motion.section
         id="projects"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgNormal} text-[#0c1a2e]`}`}
-        initial="hidden" whileInView="visible" viewport={{ once: true }}
+        className={`px-6 py-20 md:py-28 sm:px-8 ${d ? '' : `${secBgNormal} text-[#0c1a2e]`}`}
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.7, delay: 0.2 }} variants={sectionVariant}
       >
         <div className="mx-auto max-w-6xl">
@@ -326,8 +290,8 @@ export default function Home() {
       {/* ── Experience ─────────────────────────────────────────────── */}
       <motion.section
         id="experience"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgAlt} text-[#0c1a2e]`}`}
-        initial="hidden" whileInView="visible" viewport={{ once: true }}
+        className={`px-6 py-20 md:py-28 sm:px-8 ${d ? '' : `${secBgAlt} text-[#0c1a2e]`}`}
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.7, delay: 0.25 }} variants={sectionVariant}
       >
         <div className="mx-auto max-w-6xl">
@@ -351,13 +315,13 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.45 }}
               >
-                <p className="text-sm uppercase tracking-[0.24em]" style={{ color: accent }}>{item.date}</p>
+                <p className="text-sm uppercase tracking-[0.24em] text-gradient">{item.date}</p>
                 <h3 className={`mt-3 text-xl font-semibold ${textPrimary}`}>{item.title}</h3>
                 <p className={`mt-1 text-sm ${textSec}`}>{item.subtitle}</p>
                 <ul className={`mt-5 space-y-3 ${textSec}`}>
                   {item.details.map((detail) => (
                     <li key={detail} className="flex gap-2 text-sm">
-                      <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: accent }}></span>
+                      <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-accent"></span>
                       <span>{detail}</span>
                     </li>
                   ))}
@@ -371,14 +335,14 @@ export default function Home() {
       {/* ── Contact ────────────────────────────────────────────────── */}
       <motion.section
         id="contact"
-        className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : `${secBgContact} text-[#0c1a2e]`}`}
-        initial="hidden" whileInView="visible" viewport={{ once: true }}
+        className={`px-6 py-20 md:py-28 sm:px-8 ${d ? '' : `${secBgContact} text-[#0c1a2e]`}`}
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.7, delay: 0.3 }} variants={sectionVariant}
       >
         <div className="mx-auto max-w-6xl">
           <SectionHeading title="Contact" subtitle="Let's build something meaningful together." />
           <div
-            className="rounded-[2rem] p-10 shadow-2xl"
+            className="mx-auto max-w-4xl rounded-[2rem] p-8 sm:p-14 transition-shadow hover:shadow-xl"
             style={d ? {
               ...glassStrong,
               boxShadow: `0 25px 60px rgba(0,0,0,0.6), 0 0 80px rgba(125,211,252,0.06)`,
@@ -395,7 +359,7 @@ export default function Home() {
             <div className={`mt-8 space-y-5 text-sm ${textSec}`}>
               <div>
                 <p className={`font-semibold ${textPrimary}`}>Email</p>
-                <a href={`mailto:${contactInfo.email}`} style={{ color: accent }} className="transition hover:opacity-80">
+                <a href={`mailto:${contactInfo.email}`} className="transition hover:opacity-80 text-gradient">
                   {contactInfo.email}
                 </a>
               </div>

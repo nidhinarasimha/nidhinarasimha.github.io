@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './routes/Home';
 import Education from './routes/Education';
 import ProjectDetail from './routes/ProjectDetail';
@@ -11,14 +12,19 @@ function App() {
 
   return (
     <div
-      className={`relative min-h-screen ${isDark ? 'text-white' : 'bg-[#f0f9ff] text-[#0c1a2e]'}`}
+      className={`relative min-h-screen transition-colors duration-500 ${isDark ? 'text-white' : 'text-slate-800'}`}
       style={
         isDark
           ? {
-              background:
-                'radial-gradient(ellipse 90% 55% at 50% -8%, rgba(125,211,252,0.08) 0%, transparent 60%), #000000',
+              backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), radial-gradient(ellipse 90% 55% at 50% -8%, rgba(125,211,252,0.12) 0%, transparent 60%)',
+              backgroundColor: '#000000',
+              backgroundSize: '24px 24px, 100% 100%',
             }
-          : undefined
+          : {
+              backgroundImage: 'radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px), radial-gradient(ellipse 90% 55% at 50% -8%, rgba(56,189,248,0.15) 0%, transparent 60%)',
+              backgroundColor: '#e2e8f0',
+              backgroundSize: '24px 24px, 100% 100%',
+            }
       }
     >
       <Navbar />
@@ -30,6 +36,7 @@ function App() {
           <Route path="*" element={<Home />} />
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 }

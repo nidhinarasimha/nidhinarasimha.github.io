@@ -34,7 +34,7 @@ export default function Education() {
 
   return (
     <motion.section
-      className={`min-h-screen px-6 py-24 sm:px-8 ${d ? '' : 'bg-[#f0f9ff] text-[#0c1a2e]'}`}
+      className={`px-6 py-12 md:py-20 sm:px-8 min-h-[80vh] ${d ? '' : 'bg-[#f0f9ff] text-[#0c1a2e]'}`}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -53,7 +53,7 @@ export default function Education() {
               onMouseEnter={e => d && (e.currentTarget.style.borderColor = `${accent}40`)}
               onMouseLeave={e => d && (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}
             >
-              <p className="text-sm uppercase tracking-[0.24em]" style={{ color: accent }}>{item.period}</p>
+              <p className="text-sm uppercase tracking-[0.24em] text-gradient">{item.period}</p>
               <h3 className={`mt-4 text-xl font-semibold ${d ? 'text-white' : 'text-[#0c1a2e]'}`}>{item.title}</h3>
               <p className={`mt-2 text-sm ${d ? 'text-white/55' : 'text-[#4a6480]'}`}>{item.institution}</p>
               <ul className={`mt-5 space-y-3 ${d ? 'text-white/50' : 'text-[#4a6480]'}`}>

@@ -43,7 +43,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     title: 'Databases & Cloud',
-    skills: ['MongoDB', 'PostgreSQL', 'Firebase', 'Cloud Computing', 'AWS VPC'],
+    skills: ['MongoDB', 'PostgreSQL', 'Firebase', 'Cloud Computing', 'AWS'],
   },
   {
     title: 'AI & Tools',

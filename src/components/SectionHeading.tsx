@@ -19,14 +19,20 @@ export default function SectionHeading({
       : 'text-white';
 
   return (
-    <div className="mb-8 max-w-3xl">
-      <p className="text-xs uppercase tracking-[0.35em] font-medium" style={{ color: accentColor }}>{title}</p>
-      {subtitle && <h2 className={`mt-3 text-3xl font-semibold ${textColor} sm:text-4xl`}>{subtitle}</h2>}
+    <div className="mb-12 md:mb-16 max-w-3xl">
+      <div className="flex items-center gap-4">
+        <div className="h-[2px] w-12 rounded-full bg-gradient-accent"></div>
+        <p className="text-sm font-bold uppercase tracking-[0.3em] text-gradient">{title}</p>
+      </div>
+      
+      {subtitle && (
+        <h2 className={`mt-4 text-3xl font-bold tracking-tight sm:text-4xl ${textColor}`}>
+          {subtitle}
+        </h2>
+      )}
+      
       {!subtitle && (
-        <div
-          className="mt-3 h-[2px] w-16 rounded-full"
-          style={{ background: `linear-gradient(to right, ${accentColor}, transparent)` }}
-        />
+        <div className="mt-6 h-[2px] w-24 rounded-full bg-gradient-accent opacity-50" />
       )}
     </div>
   );
