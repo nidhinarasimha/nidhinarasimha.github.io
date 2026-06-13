@@ -235,6 +235,8 @@ export const timeline: TimelineItem[] = [
     details: [
       'HackerRank Problem Solving (Basic) Certificate',
       'Computational Programming course (I/O)',
+      'Microsoft Introduction to AI in Azure',
+      'Amazon Virtual Private Cloud (VPC) fundamentals',
       'Introduction to Data Engineering in Google Cloud',
     ],
   },
