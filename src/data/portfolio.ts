@@ -230,11 +230,11 @@ export const timeline: TimelineItem[] = [
   },
   {
     date: '2024',
-    title: 'AI & Cloud Certifications',
-    subtitle: 'Microsoft and AWS introductory certificates',
+    title: 'Certifications',
+    subtitle: 'Technical and programming credentials',
     details: [
-      'Microsoft Introduction to AI in Azure',
-      'Amazon Virtual Private Cloud (VPC) fundamentals',
+      'HackerRank Problem Solving (Basic) Certificate',
+      'Computational Programming course (I/O)',
       'Introduction to Data Engineering in Google Cloud',
     ],
   },
