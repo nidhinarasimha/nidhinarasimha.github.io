@@ -234,7 +234,7 @@ export const timeline: TimelineItem[] = [
     subtitle: 'Technical and programming credentials',
     details: [
       'HackerRank Problem Solving (Basic) Certificate',
-      'Computational Programming course (I/O)',
+      'Competitive Programming — 2024',
       'Microsoft Introduction to AI in Azure',
       'Amazon Virtual Private Cloud (VPC) fundamentals',
       'Introduction to Data Engineering in Google Cloud',

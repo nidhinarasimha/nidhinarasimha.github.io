@@ -6,7 +6,7 @@ import ProjectCard from '../components/ProjectCard';
 import SectionHeading from '../components/SectionHeading';
 import { useTheme } from '../contexts/ThemeContext';
 
-const profileImage = new URL('../../image1.jpeg', import.meta.url).href;
+const profileImage = new URL('../../nidhii.jpeg', import.meta.url).href;
 
 const featuredProjects = projects.filter(
   (project) => !['e-commerce-platform', 'hospital-management-system', 'hepatitis-c-analysis'].includes(project.slug)
