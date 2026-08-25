@@ -246,6 +246,54 @@ export default function Home() {
         </div>
       </motion.section>
 
+      {/* ── Work Experience ────────────────────────────────────────── */}
+      <motion.section
+        id="work-experience"
+        className={`px-6 py-20 md:py-28 sm:px-8 ${d ? '' : `${secBgAlt} text-[#0c1a2e]`}`}
+        initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.7, delay: 0.15 }} variants={sectionVariant}
+      >
+        <div className="mx-auto max-w-6xl">
+          <SectionHeading title="Experience" subtitle="Professional roles and academic contributions." tone={d ? 'dark' : 'light'} />
+          <motion.article
+            className={`p-6 sm:p-8 ${cardBase} ${cardHover}`}
+            style={d ? glass : undefined}
+            onMouseEnter={e => d
+              ? (e.currentTarget.style.borderColor = `${accent}40`)
+              : (e.currentTarget.style.borderColor = accent)
+            }
+            onMouseLeave={e => d
+              ? (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')
+              : (e.currentTarget.style.borderColor = '')
+            }
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.45 }}
+          >
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-5">
+              <div>
+                <h3 className={`text-xl font-semibold ${d ? 'text-white' : lightHeading}`}>Teaching Assistant – DSA (Data Structures and Algorithms)</h3>
+                <p className={`mt-1 text-sm ${d ? 'text-white/55' : lightCardText}`}>PES University · Bangalore, India</p>
+              </div>
+              <p className="text-sm uppercase tracking-[0.24em] text-gradient shrink-0">Aug 2026 – Present</p>
+            </div>
+            <ul className={`space-y-3 ${textSec}`}>
+              {[
+                'Assisting faculty in conducting DSA lab sessions and clearing technical doubts for undergraduate students.',
+                'Evaluating assignments and lab exercises while providing constructive feedback on code efficiency and problem-solving approaches.',
+                'Mentoring students on optimizing algorithmic solutions for time and space complexity ahead of coding assessments.',
+              ].map((detail) => (
+                <li key={detail} className="flex gap-2 text-sm">
+                  <span className="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-accent"></span>
+                  <span>{detail}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.article>
+        </div>
+      </motion.section>
+
       {/* ── Skills ─────────────────────────────────────────────────── */}
       <motion.section
         id="skills"
@@ -295,7 +343,7 @@ export default function Home() {
         transition={{ duration: 0.7, delay: 0.25 }} variants={sectionVariant}
       >
         <div className="mx-auto max-w-6xl">
-          <SectionHeading title="Experience" subtitle="Hackathons and certifications." />
+          <SectionHeading title="Hackathons & Certifications" subtitle="Competitions participated in and credentials earned." />
           <div className="grid gap-6 lg:grid-cols-2">
             {timeline.slice(1).map((item) => (
               <motion.article
